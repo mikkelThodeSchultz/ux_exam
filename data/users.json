@@ -1,23 +1,22 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "email": "userone@email.com",
-            "password": "password",
-            "favourites_id" : [
-                53010,
-                53085
-            ]
-        },
-        {
-            "id": 2,
-            "email": "usertwo@email.com",
-            "password": "password",
-            "favourites_id" : [
-                52771,
-                52777
-            ]
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "email": "userone@email.com",
+      "password": "Password1!",
+      "favourites_id": [
+        53010,
+        53085
+      ]
+    },
+    {
+      "id": 2,
+      "email": "usertwo@email.com",
+      "password": "Password1!",
+      "favourites_id": [
+        52771,
+        52777
+      ]
+    }
+  ]
 }
-
