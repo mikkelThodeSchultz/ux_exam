@@ -1,18 +1,39 @@
-import { searchMealByName } from "./mealApi.js";
+import { randomMeal, searchMealByName } from "./mealApi.js";
 import { logIn, logout, signUp } from "./auth.js";
+import { createFoodCart } from "./foodCart.js";
 
 const searchForMealForm = document.getElementById("searchForMeal")
 if(searchForMealForm){
-    searchForMealForm.addEventListener("submit", async (e) => {
-        e.preventDefault()
+    let timer;
+    const handleSearchInput = async () => {
         const searchInput = searchForMealForm.querySelector("#searchInput").value;
         try {
-            const  response = await searchMealByName(searchInput)
-            console.log(response);
+            console.log(!searchInput);
+            if(!searchInput){
+                setUpExplore()
+            } else {
+                const response = await searchMealByName(searchInput)
+                setSearchedMeals(response.meals)
+            }
         } catch (error){
             console.log(error);
         }
+    }
+
+    searchForMealForm.addEventListener("input", () => {
+        clearTimeout(timer);
+        timer = setTimeout(handleSearchInput, 500)
     })
+
+}
+
+const setSearchedMeals = async (meals) => {
+    const mealsContainer = document.getElementById("mealsContainer")
+    mealsContainer.innerHTML = "";
+    for (const meal of meals) {
+        const foodCart = await createFoodCart(meal);
+        mealsContainer.appendChild(foodCart);
+    }
 }
 
 
@@ -44,7 +65,7 @@ if(setupLoginForm){
                 alert("Wrong email or password")
             }
             else if(response.status == 200){
-                window.location.href = "../views/"
+                window.location.href = ""
                 alert("User logged in succesfully")
             } 
         } catch (error) {
@@ -58,9 +79,28 @@ if(setupLogOut){
     setupLogOut.addEventListener("click", async (e) => {
         e.preventDefault()
         await logout()
-        window.location.href = "../views/"
+        window.location.href = "/"
     })
 }
 
-//Create a function that takes a meal and creates a card.
-//It needs to be able to create a card based on a random meal and a specific meal
+const setUpExplore = async () => {
+    //Return statement to avoid overusing the API
+    return 
+    const mealsContainer = document.getElementById("mealsContainer")
+    mealsContainer.innerHTML = "";
+    for (let index = 0; index < 8; index++) {
+        const meal = await randomMeal()
+        const foodCard = await createFoodCart(meal)
+        mealsContainer.appendChild(foodCard)
+    }
+}
+
+
+const checkSite = () => {
+    const currentUrl = window.location.href;
+    if (currentUrl==="http://127.0.0.1:5500/views/explore.html"){
+        setUpExplore()
+    }
+}
+
+window.onload = checkSite();

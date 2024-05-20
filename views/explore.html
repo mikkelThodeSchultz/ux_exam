@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore</title>
     <script src="../js/app.js" type="module"></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <main>
     <nav>
@@ -22,6 +23,18 @@
             <input id="searchInput" type="text" placeholder="Search for a meal">
             <button type="submit">Search</button>
         </form>
+        <section id="mealsContainer">
+
+        </section>
+
+        <dialog id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalMealName"></h2>
+                <p id="modalInstructions"></p>
+            </div>
+        </dialog>
+        
 </main>
 </body>
 

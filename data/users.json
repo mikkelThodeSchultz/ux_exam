@@ -1,16 +1,26 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "userone@email.com",
       "password": "Password1!",
       "favourites_id": [
         53010,
-        53085
+        53085,
+        53065,
+        53065,
+        53010,
+        53010,
+        52777,
+        53010,
+        53010,
+        53010,
+        53059,
+        53010
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "usertwo@email.com",
       "password": "Password1!",
       "favourites_id": [
