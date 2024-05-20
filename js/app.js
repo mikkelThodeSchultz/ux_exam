@@ -62,3 +62,5 @@ if(setupLogOut){
     })
 }
 
+//Create a function that takes a meal and creates a card.
+//It needs to be able to create a card based on a random meal and a specific meal
