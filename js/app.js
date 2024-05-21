@@ -2,6 +2,8 @@ import { randomMeal, searchMealByName } from "./mealApi.js";
 import { logIn, logout, signUp } from "./auth.js";
 import { createFoodCart } from "./foodCart.js";
 
+const explorePageUrl = "http://127.0.0.1:5500/views/explore.html"
+
 const searchForMealForm = document.getElementById("searchForMeal")
 if(searchForMealForm){
     let timer;
@@ -95,10 +97,9 @@ const setUpExplore = async () => {
     }
 }
 
-
 const checkSite = () => {
     const currentUrl = window.location.href;
-    if (currentUrl==="http://127.0.0.1:5500/views/explore.html"){
+    if (currentUrl===explorePageUrl){
         setUpExplore()
     }
 }
