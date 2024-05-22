@@ -123,7 +123,7 @@ const favoriteMeal = async (mealId, addButton, e) => {
         location.href = '../views/login.html';
     }
     const response = await addMealToUser(userEmail, mealId);
-    if (response.status == 200){
+    if (response.status === 200){
         //TODO Change Tick with "&#10003;"
         addButton.textContent = '✓';
     }

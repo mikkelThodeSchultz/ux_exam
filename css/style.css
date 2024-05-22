@@ -1,10 +1,15 @@
 @import "_variables.css";
+@import "explore.css";
 
 /* Global */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fontDefault);
 }
 
 img {
@@ -178,6 +183,7 @@ form button {
 }
 
 .foodCart {
+
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -213,9 +219,12 @@ form button {
 
     .mealName {
       margin-top: 1vh;
+      font-size: 0.8rem;
     }
     
     .instructions {
+      font-size: 0.6rem;
+      
       
     }
   }
@@ -262,6 +271,7 @@ form button {
     padding: 1rem;
     width: 60%; 
     border-radius: 10px;
+    white-space: pre-wrap;
 
     .close {
       color: var(--black);
@@ -272,19 +282,3 @@ form button {
   }
 }
 
-/* Explore page */
-dialog#categories {
-  display: none;
-}
-
-dialog#categories.open {
-  display: block;
-  z-index: 100;
-  width: 50rem;
-  height: 20rem;
-  border: 1px solid black;
-}
-
-dialog#categories ol li {
-  cursor: pointer;
-}

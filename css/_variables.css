@@ -5,8 +5,11 @@
   --modal-background-color: rgba(0, 0, 0, 0.4); 
   --modal-content-color: white;
   --black: black;
+  --category-hover:rgb(110, 110, 110);
 
   --food-category-box-color: rgba(47, 235, 88, 0.4);
   --food-area-box-color: rgba(85, 109, 228, 0.4);
   --add-to-favorite-btn-color: rgb(91, 249, 91);
+
+  --fontDefault: Poppins, Helvetica, Arial, sans-serif;
 }
