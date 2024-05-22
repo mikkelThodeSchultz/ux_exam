@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/users"
+const url = 'http://localhost:3000/users';
 
 export const addMealToUser = async (userEmail, mealId) => {
     try {
@@ -27,4 +27,4 @@ export const addMealToUser = async (userEmail, mealId) => {
         console.error('Error:', error);
     }
 
-}
+};

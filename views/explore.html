@@ -13,10 +13,17 @@
     <nav></nav>
 
     <body>
-        <form action="" id="searchForMeal">
+        <form id="searchForMeal">
             <input id="searchInput" type="text" placeholder="Search for a meal">
             <button type="submit">Search</button>
+            <button id="showCategories">Categories</button>
         </form>
+
+        <dialog id="categories">
+            <span class="close">&times;</span>
+            <ol></ol>
+        </dialog>
+
         <section id="mealsContainer">
 
         </section>
