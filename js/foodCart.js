@@ -1,3 +1,4 @@
+import { addItemToLocalStorage } from './auth.js';
 import { addMealToUser } from './jsonApi.js';
 
 
@@ -126,6 +127,7 @@ const favoriteMeal = async (mealId, addButton, e) => {
     if (response.status === 200){
         //TODO Change Tick with "&#10003;"
         addButton.textContent = '✓';
+        await addItemToLocalStorage(mealId, 'favoritesIdList')
     }
 }; 
 
@@ -144,6 +146,8 @@ const openModal = (mealName, instructions) => {
 
     modal.style.display = 'block'; 
 };
+
+// Codeblock to stop the page from reloading when the user adds an item to the favorites list
 
 /* window.addEventListener('beforeunload', (e) => {
     // TODO VSC Go Live feature is forcing the page to reload when something changes.
