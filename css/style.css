@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: var(--fontDefault);
+  font-family: var(--font-base);
 }
 
 img {
@@ -183,7 +183,6 @@ form button {
 }
 
 .foodCart {
-
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -225,7 +224,6 @@ form button {
 
     .instructions {
       font-size: 0.6rem;
-      
     }
   }
 
@@ -281,5 +279,3 @@ form button {
     }
   }
 }
-
-
