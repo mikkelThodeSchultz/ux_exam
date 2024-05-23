@@ -25,11 +25,14 @@
     </header>
 
     <body>
-        <form id="searchForMeal">
-            <input id="searchInput" type="text" placeholder="Search for a meal">
-            <button type="submit">Search</button>
-            <button id="showCategories">Categories</button>
-        </form>
+        <h1>Browse Recipies</h1>
+        <section class="searchAndFilter">
+            <form id="searchForMeal">
+                <input id="searchInput" type="text" placeholder="Search &#x1F50E;&#xFE0E;">
+                <!-- <button type="submit">Search</button> -->
+            </form>
+            <button id="showCategories">Categories <img src="../images/cat-icon-ux.svg" alt=""></button>
+        </section>
 
         <dialog id="categories">
             <span class="close">&times;</span>
@@ -43,8 +46,8 @@
         <dialog id="modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h2 id="modalMealName"></h2>
-                <p id="modalInstructions"></p>
+                <h2 id="modalMealName">.</h2>
+                <p id="modalInstructions">.</p>
             </div>
         </dialog>
 
