@@ -29,8 +29,8 @@
   --gap-8: 2rem; /* 32px */
   --gap-12: 3rem; /* 48px */
   --gap-16: 4rem; /* 64px */
-  --color-primary: #ffffff; /* White */
-  --color-secondary: #000000; /* Black */
+  --color-primary: #f5f5f5; /* White */
+  --color-secondary: #242325; /* Black */
   --color-tertiary: #500e2d; /* Gray */
   --color-positive: #438a42; /* Green */
   --color-warning: #e75666; /* Red */
@@ -38,7 +38,7 @@
   --color-info: #3b82f6; /* Blue */
   --color-light: #f3f4f6; /* Gray */
   --color-link: #00e; /* Link blue */
-  --color-category-hover:rgb(56, 55, 55);
+  --color-category-hover: rgb(56, 55, 55);
   --border-forms: 0.4rem solid #50bb50;
   --border-input: 0.1rem solid #000;
   --border-radius-btn: 15625rem;
