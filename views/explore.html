@@ -9,14 +9,20 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <main>
-    <nav>
-        <a href="../">Home</a>
-        <a href="../views/login.html">Login</a>
-        <a href="../views/signup.html">Signup</a>
-        <a href="../views/explore.html">Explore</a>
-        <a href="../views/favorites.html">Favorites</a>
-        <button id="logOutBtn">Logout</button>
-    </nav>
+    <header>
+        <nav>
+            <div>
+                <a href="../"><img src="../images/logo-ux.svg" alt="Logo"></a>
+                <a href="../views/explore.html">Explore</a>
+                <a href="../views/favorites.html">Favorites</a>
+            </div>
+            <div>
+                <a id="signUpBtn" href="../views/signup.html"><button>Sign up</button></a>
+                <a id="loginBtn" href="../views/login.html">Login</a>
+                <a id="logOutBtn" href="../"><button>Logout</button></a>
+            </div>
+        </nav>
+    </header>
 
     <body>
         <form id="searchForMeal">
