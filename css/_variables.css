@@ -2,43 +2,43 @@
 
 :root {
   --spacing-1: 0.25rem; /* 4px */
-  --spacing-2: 0.5rem;  /* 8px */
-  --spacing-4: 1rem;    /* 16px */
-  --spacing-6: 1.5rem;  /* 24px */
-  --spacing-8: 2rem;    /* 32px */
-  --spacing-12: 3rem;   /* 48px */
-  --spacing-16: 4rem;     /* 64px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-6: 1.5rem; /* 24px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-12: 3rem; /* 48px */
+  --spacing-16: 4rem; /* 64px */
   --spacing-x-1: 0.25rem; /* 4px */
-  --spacing-x-2: 0.5rem;  /* 8px */
-  --spacing-x-4: 1rem;    /* 16px */
-  --spacing-x-6: 1.5rem;  /* 24px */
-  --spacing-x-8: 2rem;    /* 32px */
-  --spacing-x-12: 3rem;   /* 48px */
-  --spacing-x-16: 4rem;   /* 64px */
+  --spacing-x-2: 0.5rem; /* 8px */
+  --spacing-x-4: 1rem; /* 16px */
+  --spacing-x-6: 1.5rem; /* 24px */
+  --spacing-x-8: 2rem; /* 32px */
+  --spacing-x-12: 3rem; /* 48px */
+  --spacing-x-16: 4rem; /* 64px */
   --spacing-y-1: 0.25rem; /* 4px */
-  --spacing-y-2: 0.5rem;  /* 8px */
-  --spacing-y-4: 1rem;    /* 16px */
-  --spacing-y-6: 1.5rem;  /* 24px */
-  --spacing-y-8: 2rem;    /* 32px */
-  --spacing-y-12: 3rem;   /* 48px */
-  --spacing-y-16: 4rem;   /* 64px */
-  --gap-1: 0.25rem;     /* 4px */
-  --gap-2: 0.5rem;      /* 8px */
-  --gap-4: 1rem;        /* 16px */
-  --gap-6: 1.5rem;      /* 24px */
-  --gap-8: 2rem;        /* 32px */
-  --gap-12: 3rem;       /* 48px */
-  --gap-16: 4rem;       /* 64px */
-  --color-primary: #FFFFFF;   /* White */
+  --spacing-y-2: 0.5rem; /* 8px */
+  --spacing-y-4: 1rem; /* 16px */
+  --spacing-y-6: 1.5rem; /* 24px */
+  --spacing-y-8: 2rem; /* 32px */
+  --spacing-y-12: 3rem; /* 48px */
+  --spacing-y-16: 4rem; /* 64px */
+  --gap-1: 0.25rem; /* 4px */
+  --gap-2: 0.5rem; /* 8px */
+  --gap-4: 1rem; /* 16px */
+  --gap-6: 1.5rem; /* 24px */
+  --gap-8: 2rem; /* 32px */
+  --gap-12: 3rem; /* 48px */
+  --gap-16: 4rem; /* 64px */
+  --color-primary: #ffffff; /* White */
   --color-secondary: #000000; /* Black */
-  --color-tertiary: #500E2D;     /* Gray */
-  --color-positive: #438A42;   /* Green */
-  --color-warning: #E75666;    /* Red */
-  --color-accent: #FF698B;   /* Pink */
-  --color-info: #3b82f6;      /* Blue */
-  --color-light: #f3f4f6;     /* Gray */
-  --color-link: #color: #00E;;      /* Link blue */
-  --border-forms: 0.4rem solid #50BB50;
+  --color-tertiary: #500e2d; /* Gray */
+  --color-positive: #438a42; /* Green */
+  --color-warning: #e75666; /* Red */
+  --color-accent: #ff698b; /* Pink */
+  --color-info: #3b82f6; /* Blue */
+  --color-light: #f3f4f6; /* Gray */
+  --color-link: #00e; /* Link blue */
+  --border-forms: 0.4rem solid #50bb50;
   --border-input: 0.1rem solid #000;
   --border-radius-btn: 15625rem;
   --border-radius-input: 0.3125rem;
@@ -62,14 +62,13 @@
   --font-size-mobile-md: 1.2rem;
   --font-size-mobile-sm: 0.833rem;
   --font-size-mobile-tiny: 0.694rem;
-  --font-h1: 'Poleno';
-  --font-base: 'Poppins';
+  --font-h1: "Poleno";
+  --font-base: "Poppins";
   --font-weight-base: 400;
   --font-weight-md: 500;
   --font-weight-thick: 700;
   --letter-spacing-tight: -0.05em;
   --letter-spacing-normal: 0em;
-
 
   --transition-duration-75: 75ms;
   --transition-duration-100: 100ms;
