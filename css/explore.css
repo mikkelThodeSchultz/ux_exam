@@ -1,0 +1,42 @@
+/* Explore page */
+dialog#categories {
+    display: none;
+   
+  }
+  
+  dialog#categories.open {
+    display: block;
+    z-index: 100;
+    width: 25rem;
+    overflow: auto; 
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    background-color: var(--modal-content-color);
+    padding: 1rem;
+    
+  }
+
+  dialog#categories ol{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    gap: 2rem;
+  }
+  
+  dialog#categories ol li {
+    cursor: pointer;
+  }
+
+  dialog#categories ol li:hover{
+  color: var( --category-hover);
+  }
+
+
+  dialog#categories .close {
+    position: absolute;
+    top: 0.3rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+ 
