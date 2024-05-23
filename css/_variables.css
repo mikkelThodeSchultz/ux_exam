@@ -1,15 +1,87 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --primary-color: #ff0000;
-  --modal-background-color: rgba(0, 0, 0, 0.4); 
-  --modal-content-color: white;
-  --black: black;
-  --category-hover:rgb(110, 110, 110);
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem;  /* 8px */
+  --spacing-4: 1rem;    /* 16px */
+  --spacing-6: 1.5rem;  /* 24px */
+  --spacing-8: 2rem;    /* 32px */
+  --spacing-12: 3rem;   /* 48px */
+  --spacing-16: 4rem;     /* 64px */
+  --spacing-x-1: 0.25rem; /* 4px */
+  --spacing-x-2: 0.5rem;  /* 8px */
+  --spacing-x-4: 1rem;    /* 16px */
+  --spacing-x-6: 1.5rem;  /* 24px */
+  --spacing-x-8: 2rem;    /* 32px */
+  --spacing-x-12: 3rem;   /* 48px */
+  --spacing-x-16: 4rem;   /* 64px */
+  --spacing-y-1: 0.25rem; /* 4px */
+  --spacing-y-2: 0.5rem;  /* 8px */
+  --spacing-y-4: 1rem;    /* 16px */
+  --spacing-y-6: 1.5rem;  /* 24px */
+  --spacing-y-8: 2rem;    /* 32px */
+  --spacing-y-12: 3rem;   /* 48px */
+  --spacing-y-16: 4rem;   /* 64px */
+  --gap-1: 0.25rem;     /* 4px */
+  --gap-2: 0.5rem;      /* 8px */
+  --gap-4: 1rem;        /* 16px */
+  --gap-6: 1.5rem;      /* 24px */
+  --gap-8: 2rem;        /* 32px */
+  --gap-12: 3rem;       /* 48px */
+  --gap-16: 4rem;       /* 64px */
+  --color-primary: #FFFFFF;   /* White */
+  --color-secondary: #000000; /* Black */
+  --color-tertiary: #500E2D;     /* Gray */
+  --color-positive: #438A42;   /* Green */
+  --color-warning: #E75666;    /* Red */
+  --color-accent: #FF698B;   /* Pink */
+  --color-info: #3b82f6;      /* Blue */
+  --color-light: #f3f4f6;     /* Gray */
+  --color-link: #color: #00E;;      /* Link blue */
+  --border-forms: 0.4rem solid #50BB50;
+  --border-input: 0.1rem solid #000;
+  --border-radius-btn: 15625rem;
+  --border-radius-input: 0.3125rem;
+  --border-radius-search-field: 0.3125rem;
+  --border-radius-card: 0.75rem;
+  --box-shadow: 0 0.5rem 1.2rem 0 rgba(0, 0, 0, 0.15);
+  --font-size-desktop-4xl: 5.61rem;
+  --font-size-desktop-3xl: 4.209rem;
+  --font-size-desktop-2xl: 3.157rem;
+  --font-size-desktop-xl: 2.369rem;
+  --font-size-desktop-lg: 1.777rem;
+  --font-size-desktop-md: 1.333rem;
+  --font-size-base: 1rem;
+  --font-size-desktop-sm: 0.75rem;
+  --font-size-desktop-tiny: 0.563rem;
+  --font-size-mobile-4xl: 2.986rem;
+  --font-size-mobile-3xl: 2.488rem;
+  --font-size-mobile-2xl: 2.074rem;
+  --font-size-mobile-xl: 1.728rem;
+  --font-size-mobile-lg: 1.44rem;
+  --font-size-mobile-md: 1.2rem;
+  --font-size-mobile-sm: 0.833rem;
+  --font-size-mobile-tiny: 0.694rem;
+  --font-h1: 'Poleno';
+  --font-base: 'Poppins';
+  --font-weight-base: 400;
+  --font-weight-md: 500;
+  --font-weight-thick: 700;
+  --letter-spacing-tight: -0.05em;
+  --letter-spacing-normal: 0em;
 
-  --food-category-box-color: rgba(47, 235, 88, 0.4);
-  --food-area-box-color: rgba(85, 109, 228, 0.4);
-  --add-to-favorite-btn-color: rgb(91, 249, 91);
 
-  --fontDefault: Poppins, Helvetica, Arial, sans-serif;
+  --transition-duration-75: 75ms;
+  --transition-duration-100: 100ms;
+  --transition-duration-150: 150ms;
+
+  --transition-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --transition-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --transition-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
