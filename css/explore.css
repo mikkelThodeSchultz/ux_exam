@@ -9,10 +9,11 @@ dialog#categories {
     z-index: 100;
     width: 25rem;
     overflow: auto; 
-    border: 1px solid var(--color-secondary);
-    border-radius: 10px;
+    border: none;
+    border-radius: var( --border-radius-card);
     background-color: var( --color-primary);
     padding: 1rem;
+    box-shadow: var(--box-shadow);
     
   }
 
@@ -20,7 +21,7 @@ dialog#categories {
     display: grid;
     grid-template-columns: 1fr 1fr;
     list-style: none;
-    gap: 2rem;
+    gap: var(--gap-8);
   }
   
   dialog#categories ol li {
@@ -40,3 +41,115 @@ dialog#categories {
     cursor: pointer;
   }
  
+  #mealsContainer,
+  #favoritesMealsContainer {
+    margin: var(--spacing-4);
+    display: grid;
+    grid-gap: var(--gap-4);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .foodCart {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius-card);
+    margin-bottom: 3vh;
+    max-height: 40vh;
+    width: 18rem;
+    border-color: none;
+    
+  
+    .infoContainer {
+      margin: 0.5rem 1rem 1rem 1rem;
+      padding-top: 0.5vh;
+      padding-left: 0.5vh;
+  
+      .categoryArea {
+        display: flex;
+  
+        .category,
+        .area {
+          display: inline-block;
+          padding: 0.3rem 0.6rem;
+          font-size: var(--font-size-desktop-sm);
+          color: var(--color-secondary);
+          border-radius: 5px;
+          margin-right: 5px;
+        }
+        .area {
+          background-color: var(--color-food-area-box);
+        }
+        .category {
+          background-color: var(--color-food-category-box);
+        }
+      }
+  
+      .mealName {
+        margin-top: 1vh;
+        font-size: var(--font-size-base);
+        font: var(--font-base);
+      }
+  
+      .instructions {
+        font-size: 0.6rem;
+      }
+    }
+  
+    .thumbContainer {
+      position: relative;
+  
+      .mealThumbnail {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        width: 100%;
+        height: 20vh;
+        object-fit: cover;
+        display: block;
+      }
+  
+      .addToFavoritesButton {
+        background-color: var(--color-positive);
+        color:var(--color-primary);
+        font-weight: var(--font-weight-md);
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: none;
+        padding: 5px 8px;
+        border-radius: var(--border-radius-input);
+        cursor: pointer;
+      }
+    }
+  }
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--color-blur-backgrund);
+  border: none;
+
+  .modal-content {
+    background-color: var(--color-primary);
+    margin: 20vh 20%;
+    padding: 1rem;
+    width: 60%;
+    border-radius: 10px;
+    white-space: pre-wrap;
+
+    .close {
+      color: var(--color-secondary);
+      float: right;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  }
+}
