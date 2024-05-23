@@ -2,7 +2,7 @@ import { randomMeal, searchMealByName, listAllCategories, filterByCategory, sear
 import { createFoodCart } from './foodCart.js';
 
 export const handleExplore = () => {
-    const explorePageUrl = 'http://127.0.0.1:5500/views/explore.html';
+    
     const searchForMealForm = document.getElementById('searchForMeal');
     const categoriesButton = document.getElementById('showCategories');
     const categoriesList = document.getElementById('categories');
@@ -99,12 +99,5 @@ export const handleExplore = () => {
         }
     };
 
-    const checkSite = () => {
-        const currentUrl = window.location.href;
-        if (currentUrl === explorePageUrl) {
-            setUpExplore();
-        }
-    };
-
-    window.onload = checkSite();
+    setUpExplore();
 };

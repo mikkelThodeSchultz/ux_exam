@@ -2,8 +2,6 @@ import { createFoodCart } from './foodCart.js';
 import { getUserByEmail } from './jsonApi.js';
 import { searchMealById } from './mealApi.js';
 
-const favoritesPageUrl = 'http://127.0.0.1:5500/views/favorites.html';
-
 export const setUpFavorites = async () => {
     console.log('TEST');
     const userEmail = sessionStorage.getItem('userEmail');
