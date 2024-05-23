@@ -2,7 +2,6 @@ import { addMealToUser } from './jsonApi.js';
 
 
 export const createFoodCart = async (mealList) => {
-    //If mealList is a list, a meal is the first on that list. Otherwise it is the mealList
     const meal = mealList && mealList.meals && mealList.meals[0] ? mealList.meals[0] : mealList;
     const mealId = meal.idMeal;
     const mealName = meal.strMeal;
@@ -30,9 +29,10 @@ export const createFoodCart = async (mealList) => {
 
     // Favorite button
     const addButton = document.createElement('button');
+    addButton.type = 'button';
     addButton.textContent = '+';
     addButton.classList.add('addToFavoritesButton');
-    addButton.addEventListener('click', (e) => {
+    addButton.addEventListener('click', async (e) => {
         e.stopPropagation();
         e.preventDefault();
         favoriteMeal(mealId, addButton, e);
@@ -129,7 +129,7 @@ const favoriteMeal = async (mealId, addButton, e) => {
     }
 }; 
 
-//TODO Add the rest of the data to the modal content
+// TODO Add the rest of the data to the modal content
 const openModal = (mealName, instructions) => {
     const closeBtn = document.querySelector('dialog#modal span.close');
     closeBtn.addEventListener('click', () => {
@@ -145,3 +145,10 @@ const openModal = (mealName, instructions) => {
     modal.style.display = 'block'; 
 };
 
+window.addEventListener('beforeunload', (e) => {
+    // TODO VSC Go Live feature is forcing the page to reload when something changes.
+    // I dont know how we can fix this issue. 
+    console.log("Page is trying to unload");  
+    console.log(e);
+    console.trace()
+});
