@@ -1,8 +1,10 @@
-import { randomMeal, searchMealByName } from "./mealApi.js";
+import { randomMeal, searchMealById, searchMealByName } from "./mealApi.js";
 import { logIn, logout, signUp } from "./auth.js";
 import { createFoodCart } from "./foodCart.js";
+import { getUserByEmail } from "./jsonApi.js";
 
 const explorePageUrl = "http://127.0.0.1:5500/views/explore.html";
+const favoritesPageUrl = "http://127.0.0.1:5500/views/favorites.html";
 
 const searchForMealForm = document.getElementById("searchForMeal");
 if (searchForMealForm) {
@@ -84,6 +86,7 @@ if (setupLogOut) {
 
 const setUpExplore = async () => {
   //Return statement to avoid overusing the API
+  // return
   const mealsContainer = document.getElementById("mealsContainer");
   mealsContainer.innerHTML = "";
   for (let index = 0; index < 8; index++) {
@@ -93,10 +96,29 @@ const setUpExplore = async () => {
   }
 };
 
+const setUpFavorites = async () => {
+  const userEmail = sessionStorage.getItem('userEmail');
+  if (!userEmail) {
+    location.href = "../views/login.html";
+    return;
+}
+  const user = await getUserByEmail(userEmail)
+  const mealsContainer = document.getElementById("favoritesMealsContainer");
+  mealsContainer.innerHTML = "";
+  for (let index = 0; index < user.favourites_id.length; index++) {
+    const meal = await searchMealById(user.favourites_id[index])
+    const foodCard = await createFoodCart(meal);
+    mealsContainer.appendChild(foodCard);
+  } 
+}
+
 const checkSite = () => {
   const currentUrl = window.location.href;
   if (currentUrl === explorePageUrl) {
     setUpExplore();
+  }
+  if (currentUrl === favoritesPageUrl){
+    setUpFavorites()
   }
 };
 

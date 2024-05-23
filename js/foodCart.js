@@ -1,18 +1,16 @@
-import { addMealToUser } from "./jsonApi.js"
-
+import { addMealToUser } from "./jsonApi.js";
 
 export const createFoodCart = async (mealList) => {
-    //If mealList is a list, a meal is the first on that list. Otherwise it is the mealList
     const meal = mealList && mealList.meals && mealList.meals[0] ? mealList.meals[0] : mealList;
-    const mealId = meal.idMeal
-    const mealName = meal.strMeal
-    const mealArea = meal.strArea
-    const mealCategory = meal.strCategory
-    const mealIngredients = await getIngredients(meal)
-    const mealInstructions = meal.strInstructions
-    const mealThumb = meal.strMealThumb
-    const mealTags = await getTags(meal.strTags)
-    const mealYoutubeLink = meal.strYoutube 
+    const mealId = meal.idMeal;
+    const mealName = meal.strMeal;
+    const mealArea = meal.strArea;
+    const mealCategory = meal.strCategory;
+    const mealIngredients = await getIngredients(meal);
+    const mealInstructions = meal.strInstructions;
+    const mealThumb = meal.strMealThumb;
+    const mealTags = await getTags(meal.strTags);
+    const mealYoutubeLink = meal.strYoutube;
     
     // Wrapper
     const cartSection = document.createElement('section');
@@ -30,12 +28,13 @@ export const createFoodCart = async (mealList) => {
 
     // Favorite button
     const addButton = document.createElement('button');
+    addButton.type = 'button';
     addButton.textContent = '+';
     addButton.classList.add('addToFavoritesButton');
-    addButton.addEventListener('click', (e) => {
+    addButton.addEventListener('click', async (e) => {
         e.stopPropagation();
         e.preventDefault();
-        favoriteMeal(mealId, addButton, e)
+        await favoriteMeal(mealId, addButton);
     });
 
     thumbContainer.appendChild(img);
@@ -87,9 +86,9 @@ export const createFoodCart = async (mealList) => {
 const shortenInstructions = async (instructions) => {
     if (instructions.length > 50) {
         return instructions.substring(0, 50) + "...";
-      } else {
+    } else {
         return instructions;
-      }
+    }
 }
 
 const getIngredients = async (meal) => {
@@ -108,28 +107,26 @@ const getIngredients = async (meal) => {
 }
 
 const getTags = async (tags) => {
-    if(!tags){
-        return ""
+    if (!tags) {
+        return "";
     }
     const tagsArrays = tags.split(',');
     return tagsArrays.map(tag => tag.trim());
-} 
+}
 
-const favoriteMeal = async (mealId, addButton, e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    const userEmail = sessionStorage.getItem('userEmail')
-    if(!userEmail){
-        location.href = "../views/login.html"
+const favoriteMeal = async (mealId, addButton) => {
+    const userEmail = sessionStorage.getItem('userEmail');
+    if (!userEmail) {
+        location.href = "../views/login.html";
+        return;
     }
-    const response = await addMealToUser(userEmail, mealId)
-    if (response.status == 200){
-        //TODO Change Tick with "&#10003;"
+    const response = await addMealToUser(userEmail, mealId);
+    if (response.status === 200) {
         addButton.textContent = '✓';
     }
-} 
+}
 
-//TODO Add the rest of the data to the modal content
+// TODO Add the rest of the data to the modal content
 const openModal = (mealName, instructions) => {
     const closeBtn = document.getElementsByClassName('close')[0];
     closeBtn.addEventListener('click', () => {
@@ -145,3 +142,10 @@ const openModal = (mealName, instructions) => {
     modal.style.display = 'block'; 
 };
 
+window.addEventListener('beforeunload', (e) => {
+    // TODO VSC Go Live feature is forcing the page to reload when something changes.
+    // I dont know how we can fix this issue. 
+    console.log("Page is trying to unload");  
+    console.log(e);
+    console.trace()
+});
