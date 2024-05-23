@@ -145,10 +145,10 @@ const openModal = (mealName, instructions) => {
     modal.style.display = 'block'; 
 };
 
-window.addEventListener('beforeunload', (e) => {
+/* window.addEventListener('beforeunload', (e) => {
     // TODO VSC Go Live feature is forcing the page to reload when something changes.
     // I dont know how we can fix this issue. 
     console.log("Page is trying to unload");  
     console.log(e);
     console.trace()
-});
+}); */

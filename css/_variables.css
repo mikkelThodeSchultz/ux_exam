@@ -38,6 +38,7 @@
   --color-info: #3b82f6; /* Blue */
   --color-light: #f3f4f6; /* Gray */
   --color-link: #00e; /* Link blue */
+  --color-category-hover:rgb(56, 55, 55);
   --border-forms: 0.4rem solid #50bb50;
   --border-input: 0.1rem solid #000;
   --border-radius-btn: 15625rem;
