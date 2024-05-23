@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <script src="../js/insertNavbar.js" defer></script>
     <script src="../js/app.js" type="module"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <main>
-    <nav></nav>
+    <nav><a href="../">Home</a>
+        <a href="../views/login.html">Login</a>
+        <a href="../views/signup.html">Signup</a>
+        <a href="../views/explore.html">Explore</a>
+        <a href="../views/favorites.html">Favorites</a>
+        <button id="logOutBtn">Logout</button>
+    </nav>
+
     <body>
         <article id="home_wrapper">
             <section id="home_text">
@@ -25,5 +31,4 @@
         </article>
     </body>
 </main>
-
 </html>
