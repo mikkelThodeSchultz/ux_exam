@@ -6,29 +6,10 @@
   --spacing-4: 1rem; /* 16px */
   --spacing-6: 1.5rem; /* 24px */
   --spacing-8: 2rem; /* 32px */
+  --spacing-10: 2.5rem; /* 32px */
   --spacing-12: 3rem; /* 48px */
+  --spacing-14: 3.5rem; /* 48px */
   --spacing-16: 4rem; /* 64px */
-  --spacing-x-1: 0.25rem; /* 4px */
-  --spacing-x-2: 0.5rem; /* 8px */
-  --spacing-x-4: 1rem; /* 16px */
-  --spacing-x-6: 1.5rem; /* 24px */
-  --spacing-x-8: 2rem; /* 32px */
-  --spacing-x-12: 3rem; /* 48px */
-  --spacing-x-16: 4rem; /* 64px */
-  --spacing-y-1: 0.25rem; /* 4px */
-  --spacing-y-2: 0.5rem; /* 8px */
-  --spacing-y-4: 1rem; /* 16px */
-  --spacing-y-6: 1.5rem; /* 24px */
-  --spacing-y-8: 2rem; /* 32px */
-  --spacing-y-12: 3rem; /* 48px */
-  --spacing-y-16: 4rem; /* 64px */
-  --gap-1: 0.25rem; /* 4px */
-  --gap-2: 0.5rem; /* 8px */
-  --gap-4: 1rem; /* 16px */
-  --gap-6: 1.5rem; /* 24px */
-  --gap-8: 2rem; /* 32px */
-  --gap-12: 3rem; /* 48px */
-  --gap-16: 4rem; /* 64px */
   --color-primary: #f5f5f5; /* White */
   --color-secondary: #242325; /* Black */
   --color-tertiary: #500e2d; /* Gray */
@@ -40,8 +21,9 @@
   --color-link: #00e; /* Link blue */
   --color-category-hover: rgb(56, 55, 55);
   --border-forms: 0.4rem solid #50bb50;
-  --border-input: 0.1rem solid #000;
-  --border-radius-btn: 15625rem;
+  --border-input: 0.1rem solid #c3d2c3;
+  --border-radius-btn: 1.5625rem;
+  --border-radius-form: 1.5625rem;
   --border-radius-input: 0.3125rem;
   --border-radius-search-field: 0.3125rem;
   --border-radius-card: 0.75rem;
@@ -70,6 +52,10 @@
   --font-weight-thick: 700;
   --letter-spacing-tight: -0.05em;
   --letter-spacing-normal: 0em;
+  --line-height-base: 1.5em;
+  --line-height-tight: 1.2em;
+  --line-height-hero-desktop: 0.9;
+  --line-height-hero-mobile: 3rem;
 
   --transition-duration-75: 75ms;
   --transition-duration-100: 100ms;
@@ -78,6 +64,8 @@
   --transition-ease-in: cubic-bezier(0.4, 0, 1, 1);
   --transition-ease-out: cubic-bezier(0, 0, 0.2, 1);
   --transition-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --transform-btn: translateY(-0.2rem);
 
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
