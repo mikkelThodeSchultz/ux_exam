@@ -7,7 +7,6 @@ body {
   height: 100dvh;
   overflow: hidden;
   background-color: var(--color-primary);
-  margin-top: -50px;
   background-color: var(--color-primary);
 }
 
@@ -25,13 +24,12 @@ main nav {
   background-color: var(--color-primary);
 }
 
-/* Login and signup */
-#login_wrapper {
+/* Signup */
+#signup_wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  margin-top: var(--spacing-8);
 }
 
 h1 {
@@ -39,6 +37,7 @@ h1 {
   font-weight: var(--font-weight-thick);
   text-align: center;
   font-family: var(--font-base);
+  line-height: var(--line-height-tight);
 }
 
 #signup_form_and_text_wrapper {
@@ -48,6 +47,7 @@ h1 {
   padding: var(--spacing-6);
   border: var(--border-forms);
   border-radius: var(--border-radius-form);
+  gap: var(--spacing-2);
 
   h1 {
     font-size: var(--font-size-desktop-xl);
@@ -56,7 +56,7 @@ h1 {
     font-family: var(--font-base);
   }
 
-  .login_article_text {
+  .signup_article_text {
     font-size: var(--font-size-desktop-md);
     line-height: var(--line-height-tight);
     text-align: center;
@@ -88,14 +88,6 @@ form {
     font-size: var(--font-size-desktop-base);
   }
 
-  .login_btn_wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: var(--spacing-6);
-  }
-
   button {
     text-align: center;
     padding: var(--spacing-1) var(--spacing-4);
@@ -111,46 +103,49 @@ form {
     transform: var(--transform-btn);
     box-shadow: var(--box-shadow);
   }
-
-  #login_form {
-    display: flex;
-    flex-direction: column;
-  }
 }
 
-.form_reminder {
+#form_reminder {
   font-size: var(--font-size-desktop-sm);
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: var(--spacing-4);
+  gap: var(--spacing-1);
 }
 
 /* Media queries */
 @media (max-width: 1000px) {
-  #login_wrapper {
+  #signup_wrapper {
     flex-direction: column-reverse;
-    margin-top: 200px;
   }
-  #login_wrapper .hidden_desktop {
+  #signup_wrapper .hidden_desktop {
     display: none;
   }
 
-  #login_wrapper .hidden_mobile {
-    display: block;
+  #signup_wrapper article .hidden_mobile {
+    display: flex;
   }
 }
 
 @media (max-width: 600px) {
-  #login_form_and_text_wrapper {
+  #signup_form_and_text_wrapper {
     border: none;
+
+    h1 {
+      font-size: var(--font-size-desktop-lg);
+    }
+
+    .signup_article_text {
+      font-size: var(--font-size-base);
+    }
   }
 }
 
 /* Target devices with aspect ratio between 3/2 and 4/3 and max-width of 800px */
-@media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 2/1) and (max-width: 1000px) {
-  #login_wrapper .hidden_mobile {
+@media (min-aspect-ratio: 1/2.5) and (max-aspect-ratio: 2/1) and (max-width: 1000px) {
+  #signup_wrapper article .hidden_mobile {
     display: none;
   }
 }

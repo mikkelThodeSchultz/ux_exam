@@ -48,6 +48,7 @@ h1 {
   padding: var(--spacing-6);
   border: var(--border-forms);
   border-radius: var(--border-radius-form);
+  gap: var(--spacing-2);
 
   h1 {
     font-size: var(--font-size-desktop-xl);
