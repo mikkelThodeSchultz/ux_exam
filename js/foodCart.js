@@ -27,7 +27,19 @@ export const createFoodCart = async (mealList) => {
     img.alt = `Meal thumbnail of: ${mealName}`;
     img.classList.add('mealThumbnail');
 
+    // Favorite button
+    const addButton = document.createElement('button');
+    addButton.type = 'button';
+    addButton.textContent = '+';
+    addButton.classList.add('addToFavoritesButton');
+    addButton.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        favoriteMeal(mealId, addButton, e);
+    });
+
     thumbContainer.appendChild(img);
+    thumbContainer.appendChild(addButton);
 
     // Info Container
     const infoContainer = document.createElement('div');
@@ -64,22 +76,11 @@ export const createFoodCart = async (mealList) => {
     infoContainer.appendChild(mealNameHeading);
     infoContainer.appendChild(instructionsParagraph);
 
-    // Favorite button
-    const addButton = document.createElement('button');
-    addButton.type = 'button';
-    addButton.textContent = '+';
-    addButton.classList.add('addToFavoritesButton');
-    addButton.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        favoriteMeal(mealId, addButton, e);
-    });
+    cartSection.addEventListener('click', () => openModal(mealName, mealInstructions, mealIngredients));
 
     cartSection.appendChild(thumbContainer);
     cartSection.appendChild(infoContainer);
     cartSection.appendChild(addButton);
-
-    cartSection.addEventListener('click', () => openModal(mealName, mealInstructions, mealIngredients));
 
     return cartSection;
 };
@@ -153,5 +154,6 @@ const openModal = (mealName, instructions, ingredients) => {
 
     modal.style.display = 'block'; 
 };
+
 
 
