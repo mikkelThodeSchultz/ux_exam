@@ -27,19 +27,7 @@ export const createFoodCart = async (mealList) => {
     img.alt = `Meal thumbnail of: ${mealName}`;
     img.classList.add('mealThumbnail');
 
-    // Favorite button
-    const addButton = document.createElement('button');
-    addButton.type = 'button';
-    addButton.textContent = '+';
-    addButton.classList.add('addToFavoritesButton');
-    addButton.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        favoriteMeal(mealId, addButton, e);
-    });
-
     thumbContainer.appendChild(img);
-    thumbContainer.appendChild(addButton);
 
     // Info Container
     const infoContainer = document.createElement('div');
@@ -76,10 +64,22 @@ export const createFoodCart = async (mealList) => {
     infoContainer.appendChild(mealNameHeading);
     infoContainer.appendChild(instructionsParagraph);
 
-    cartSection.addEventListener('click', () => openModal(mealName, mealInstructions, mealIngredients));
+    // Favorite button
+    const addButton = document.createElement('button');
+    addButton.type = 'button';
+    addButton.textContent = '+';
+    addButton.classList.add('addToFavoritesButton');
+    addButton.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        favoriteMeal(mealId, addButton, e);
+    });
 
     cartSection.appendChild(thumbContainer);
     cartSection.appendChild(infoContainer);
+    cartSection.appendChild(addButton);
+
+    cartSection.addEventListener('click', () => openModal(mealName, mealInstructions, mealIngredients));
 
     return cartSection;
 };
@@ -135,10 +135,11 @@ const openModal = (mealName, instructions, ingredients) => {
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
     });
-
+ 
     const modalMealName = document.getElementById('modalMealName');
     const modalInstructions = document.getElementById('modalInstructions');
     const modalIngredients=document.getElementById('modalIngredience');
+
 
     modalMealName.textContent = mealName;
     modalIngredients.innerHTML = '';
@@ -153,10 +154,4 @@ const openModal = (mealName, instructions, ingredients) => {
     modal.style.display = 'block'; 
 };
 
-/* window.addEventListener('beforeunload', (e) => {
-    // TODO VSC Go Live feature is forcing the page to reload when something changes.
-    // I dont know how we can fix this issue. 
-    console.log("Page is trying to unload");  
-    console.log(e);
-    console.trace()
-}); */
+
