@@ -6,20 +6,28 @@
     <title>Home</title>
     <script src="../js/app.js" type="module"></script>
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/signup.css" />
   </head>
-  <body>
-    <main>
+  <main>
+    <header>
       <nav>
-        <a href="../">Home</a>
-        <a href="../views/login.html">Login</a>
-        <a href="../views/signup.html">Signup</a>
-        <a href="../views/explore.html">Explore</a>
-        <a href="../views/favorites.html">Favorites</a>
-        <button id="logOutBtn">Logout</button>
+        <div>
+          <a href="../"><img src="../images/logo-ux.svg" alt="Logo" /></a>
+          <a href="../views/explore.html">Explore</a>
+          <a href="../views/favorites.html">Favorites</a>
+        </div>
+        <div>
+          <a id="signUpBtn" href="../views/signup.html"
+            ><button>Sign up</button></a
+          >
+          <a id="loginBtn" href="../views/login.html">Login</a>
+          <a id="logOutBtn" href="../"><button>Logout</button></a>
+        </div>
       </nav>
-      <section id="signup_wrapper">
-        <article>
+    </header>
+
+    <body>
+      <article id="login_signup_wrapper">
+        <section>
           <img class="hidden_desktop" src="../images/signup-ux.svg" alt="" />
           <img
             class="hidden_mobile"
@@ -27,14 +35,14 @@
             src="../images/signup-mobil-ux.svg"
             alt=""
           />
-        </article>
-        <article id="signup_form_and_text_wrapper">
+        </section>
+        <section>
           <h1>Sign Up for an Account 👋</h1>
-          <p class="signup_article_text">
+          <p>
             Lets get you all set up so you can start exploring your first
             recepies.
           </p>
-          <form id="signupForm">
+          <form id="signUpForm">
             <div>
               <label for="user_email">Email</label>
               <input
@@ -78,8 +86,8 @@
           <p id="form_reminder">
             Already signed up?<a href="../views/login.html">Log in instead</a>
           </p>
-        </article>
-      </section>
-    </main>
-  </body>
+        </section>
+      </article>
+    </body>
+  </main>
 </html>
