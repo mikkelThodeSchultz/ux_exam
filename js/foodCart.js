@@ -76,10 +76,11 @@ export const createFoodCart = async (mealList) => {
     infoContainer.appendChild(mealNameHeading);
     infoContainer.appendChild(instructionsParagraph);
 
-    cartSection.addEventListener('click', () => openModal(mealName, mealInstructions));
+    cartSection.addEventListener('click', () => openModal(mealName, mealInstructions, mealIngredients));
 
     cartSection.appendChild(thumbContainer);
     cartSection.appendChild(infoContainer);
+    cartSection.appendChild(addButton);
 
     return cartSection;
 };
@@ -130,25 +131,29 @@ const favoriteMeal = async (mealId, addButton, e) => {
 }; 
 
 // TODO Add the rest of the data to the modal content
-const openModal = (mealName, instructions) => {
+const openModal = (mealName, instructions, ingredients) => {
     const closeBtn = document.querySelector('dialog#modal span.close');
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
     });
-
+ 
     const modalMealName = document.getElementById('modalMealName');
     const modalInstructions = document.getElementById('modalInstructions');
+    const modalIngredients=document.getElementById('modalIngredience');
+
 
     modalMealName.textContent = mealName;
+    modalIngredients.innerHTML = '';
+    for (const ingredient of ingredients){
+        const elem=document.createElement('p');
+        elem.textContent=ingredient.measure +' '+ ingredient.ingredient;
+        modalIngredients.appendChild(elem);
+    }
+
     modalInstructions.textContent = instructions;
 
     modal.style.display = 'block'; 
 };
 
-/* window.addEventListener('beforeunload', (e) => {
-    // TODO VSC Go Live feature is forcing the page to reload when something changes.
-    // I dont know how we can fix this issue. 
-    console.log("Page is trying to unload");  
-    console.log(e);
-    console.trace()
-}); */
+
+
