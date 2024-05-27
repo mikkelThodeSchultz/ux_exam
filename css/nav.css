@@ -25,7 +25,8 @@ nav a {
   text-decoration: none;
 }
 
-nav button {
+nav #signUpBtn,
+nav #logOutBtn {
   font-family: var(--font-base);
   background-color: var(--color-secondary);
   color: var(--color-primary);
