@@ -1,3 +1,4 @@
+import { addItemToLocalStorage } from './auth.js';
 import { addMealToUser } from './jsonApi.js';
 
 
@@ -127,6 +128,7 @@ const favoriteMeal = async (mealId, addButton, e) => {
     if (response.status === 200){
         //TODO Change Tick with "&#10003;"
         addButton.textContent = '✓';
+        await addItemToLocalStorage(mealId, 'favoritesIdList')
     }
 }; 
 

@@ -72,6 +72,7 @@ export const logIn = async (formData) => {
         const data = await response.json();
         if (data){
             sessionStorage.setItem('userEmail', data[0].email);
+            await saveListToLocalStorage(data[0].favourites_id)
         } 
         return response;
     } catch (error) {
@@ -81,4 +82,17 @@ export const logIn = async (formData) => {
 
 export const logout = async () => {
     sessionStorage.clear();
+    localStorage.clear();
 };
+
+export const saveListToLocalStorage = async (list) => {
+    localStorage.setItem('favoritesIdList', JSON.stringify(list));
+};
+
+export const addItemToLocalStorage = async (item, key) => {
+    console.log(item);
+    console.log(key);
+    const getList = JSON.parse(localStorage.getItem(key));
+    getList.push(item);
+    localStorage.setItem(key, JSON.stringify(getList))
+}
