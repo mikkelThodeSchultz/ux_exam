@@ -158,6 +158,19 @@ dialog#categories .close {
   right: 0;
 }
 
+.foodCart .removeFromFavoritesButton {
+  background-color: var(--color-warning);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-md);
+  position: absolute;
+  border: none;
+  padding: 5px 8px;
+  border-radius: var(--border-radius-input);
+  cursor: pointer;
+  top: 0;
+  right: 0;
+}
+
 .modal {
   display: none;
   position: fixed;

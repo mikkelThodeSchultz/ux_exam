@@ -28,3 +28,19 @@ if (sessionStorage === null || sessionStorage.getItem('userEmail') === null) {
     document.getElementById('loginBtn').style.display = 'none';
     document.getElementById('signUpBtn').style.display = 'none';
 }
+
+
+// Event listener to run the function when the DOM is fully loaded
+window.addEventListener('DOMContentLoaded', (event) => {
+    updateAdventureLink();
+});
+
+const updateAdventureLink = () => {
+    const userEmail = sessionStorage.getItem("userEmail");
+    const adventureLink = document.getElementById("adventureLink");
+    if (userEmail) {
+        // User is logged in, update link to explore page
+        adventureLink.href = "../views/explore.html";
+       
+    }
+};

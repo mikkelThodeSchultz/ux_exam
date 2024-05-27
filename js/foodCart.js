@@ -1,7 +1,7 @@
 import { addItemToLocalStorage,removeItemFromLocalStorage } from "./auth.js";
 import { addMealToUser,removeMealFromUser } from "./jsonApi.js";
 
-export const createFoodCart = async (mealList) => {
+export const createFoodCart = async (mealList, mode = 'explore') => {
   const meal =
     mealList && mealList.meals && mealList.meals[0]
       ? mealList.meals[0]
@@ -27,31 +27,43 @@ export const createFoodCart = async (mealList) => {
   // Thumbnail
   const img = document.createElement("img");
   img.src = `${mealThumb}`;
-  img.alt = `Meal thumbnail of: ${mealName}`;
+  img.alt = `Image of meal: ${mealName}`;
   img.classList.add("mealThumbnail");
 
-  // Favorite button
-  const addButton = document.createElement("button");
-  addButton.type = "button";
-  addButton.textContent = "+";
-  addButton.classList.add("addToFavoritesButton");
-  addButton.addEventListener("click", async (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    favoriteMeal(mealId, addButton, e);
-  });
-  const removeButton = document.createElement("button");
-  removeButton.type = "button"; // 
-  removeButton.textContent = "-";
-  removeButton.classList.add("removeFromFavoritesButton");
-  removeButton.addEventListener("click", async (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    removeFavorite(mealId, removeButton, e);
-  });
+  // Buttons Container
+  const buttonsContainer = document.createElement("div");
+  buttonsContainer.classList.add("buttonsContainer");
+
+  if (mode === 'explore') {
+    // Add button
+    const addButton = document.createElement("button");
+    addButton.type = "button";
+    addButton.textContent = "+";
+    addButton.classList.add("addToFavoritesButton");
+    addButton.setAttribute("aria-label", "Add to favorites");
+    addButton.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      favoriteMeal(mealId, addButton, e);
+    });
+    buttonsContainer.appendChild(addButton);
+  } else if (mode === 'favorites') {
+    // Remove button
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "-";
+    removeButton.classList.add("removeFromFavoritesButton");
+    removeButton.setAttribute("aria-label", "Remove from favorites");
+    removeButton.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      removeFavorite(mealId, removeButton, e);
+    });
+    buttonsContainer.appendChild(removeButton);
+  }
+
   thumbContainer.appendChild(img);
-  thumbContainer.appendChild(addButton);
-  thumbContainer.appendChild(removeButton);
+  thumbContainer.appendChild(buttonsContainer);
 
   // Info Container
   const infoContainer = document.createElement("div");
@@ -96,8 +108,6 @@ export const createFoodCart = async (mealList) => {
 
   cartSection.appendChild(thumbContainer);
   cartSection.appendChild(infoContainer);
-  cartSection.appendChild(addButton);
-  cartSection.appendChild(removeButton);
 
   return cartSection;
 };
@@ -109,6 +119,7 @@ const shortenInstructions = async (instructions) => {
     return instructions;
   }
 };
+
 
 const getIngredients = async (meal) => {
   const ingredients = [];
@@ -185,8 +196,7 @@ const removeFavorite = async (mealId, addButton, e) => {
   await removeItemFromLocalStorage(mealId, "favoritesIdList");
   const response = await removeMealFromUser(userEmail, mealId);
   if (response.status === 200) {
-    //TODO Change Tick with "&#10003;"
-    addButton.textContent = "?";
+    addButton.innerHTML = '&#10003;';
     
   } else {
     console.log(response, mealId);

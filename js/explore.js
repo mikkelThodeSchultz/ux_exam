@@ -51,7 +51,7 @@ export const handleExplore = () => {
         const mealsContainer = document.getElementById('mealsContainer');
         mealsContainer.innerHTML = '';
         for (const meal of meals) {
-            const foodCart = await createFoodCart(meal);
+            const foodCart = await createFoodCart(meal, 'explore');
             mealsContainer.appendChild(foodCart);
         }
     };
@@ -94,7 +94,7 @@ export const handleExplore = () => {
         mealsContainer.innerHTML = '';
         for (let index = 0; index < 8; index++) {
             const meal = await randomMeal();
-            const foodCard = await createFoodCart(meal);
+            const foodCard = await createFoodCart(meal,'explore');
             mealsContainer.appendChild(foodCard);
         }
     };
