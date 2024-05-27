@@ -31,7 +31,7 @@ export const handleLoginAndSignup = () => {
                 if (!response) {
                     showAlert('Wrong email or password');
                 } else if (response.status === 200) {
-                    //window.location.href = '../views/favorites.html';
+                    window.location.href = '../views/favorites.html';
                     showAlert('User logged in succesfully');
                 }
             } catch (error) {
