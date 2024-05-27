@@ -1,63 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Explore</title>
     <script src="../js/app.js" type="module"></script>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/explore.css" />
+  </head>
 
-<body>
-
-
+  <body>
     <header>
-        <nav>
-            <div>
-                <a href="../"><img src="../images/logo-ux.svg" alt="Logo"></a>
-                <a href="../views/explore.html">Explore</a>
-                <a href="../views/favorites.html">Favorites</a>
-            </div>
-            <div>
-                <a id="signUpBtn" href="../views/signup.html">Sign up</a>
-                <a id="loginBtn" href="../views/login.html">Login</a>
-                <a id="logOutBtn" href="../">Logout</a>
-            </div>
-        </nav>
+      <nav>
+        <div>
+          <a href="../"><img src="../images/logo-ux.svg" alt="Logo" /></a>
+          <a href="../views/explore.html">Explore</a>
+          <a href="../views/favorites.html">Favorites</a>
+        </div>
+        <div>
+          <a id="signUpBtn" href="../views/signup.html">Sign up</a>
+          <a id="loginBtn" href="../views/login.html">Login</a>
+          <a id="logOutBtn" href="../">Logout</a>
+        </div>
+      </nav>
     </header>
 
     <main>
+      <h1 class="center">Browse Recipies</h1>
 
-        <h1 class="center">Browse Recipies</h1>
-        <section class="searchAndFilter">
-            <form id="searchForMeal">
-                <input id="searchInput" type="text" placeholder="Search &#x1F50E;&#xFE0E;">
-                <!-- <button type="submit">Search</button> -->
-            </form>
-            <button id="showCategories">Categories <img src="../images/cat-icon-ux.svg" alt=""></button>
-        </section>
+      <form id="searchForMeal">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search &#x1F50E;&#xFE0E;"
+        />
+        <!-- <button type="submit">Search</button> -->
+        <button id="showCategories">
+          Categories <img src="../images/cat-icon-ux.svg" alt="" />
+        </button>
+      </form>
 
-        <dialog id="categories">
-            <span class="close">&times;</span>
-            <ol></ol>
-        </dialog>
+      <dialog id="categories">
+        <span class="close">&times;</span>
+        <ol></ol>
+      </dialog>
 
-        <section id="mealsContainer">
+      <div class="wrapper">
+        <section id="mealsContainer"></section>
+      </div>
 
-        </section>
+      <dialog id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <img class="modalImage" src="" alt="" />
 
-        <dialog id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2 id="modalMealName"></h2>
-                <p id="modalIngredience"></p>
-                <p id="modalInstructions"></p>
-            </div>
-        </dialog>
-
+          <h2 id="modalMealName"></h2>
+          <p id="modalIngredience"></p>
+          <p id="modalInstructions"></p>
+        </div>
+      </dialog>
     </main>
-
-</body>
-
+  </body>
 </html>
