@@ -1,161 +1,163 @@
-import { addItemToLocalStorage } from './auth.js';
-import { addMealToUser } from './jsonApi.js';
-
+import { addItemToLocalStorage } from "./auth.js";
+import { addMealToUser } from "./jsonApi.js";
 
 export const createFoodCart = async (mealList) => {
-    const meal = mealList && mealList.meals && mealList.meals[0] ? mealList.meals[0] : mealList;
-    const mealId = meal.idMeal;
-    const mealName = meal.strMeal;
-    const mealArea = meal.strArea;
-    const mealCategory = meal.strCategory;
-    const mealIngredients = await getIngredients(meal);
-    const mealInstructions = meal.strInstructions;
-    const mealThumb = meal.strMealThumb;
-    const mealTags = await getTags(meal.strTags);
-    const mealYoutubeLink = meal.strYoutube; 
-    
-    // Wrapper
-    const cartSection = document.createElement('section');
-    cartSection.classList.add('foodCart');
+  const meal =
+    mealList && mealList.meals && mealList.meals[0]
+      ? mealList.meals[0]
+      : mealList;
+  const mealId = meal.idMeal;
+  const mealName = meal.strMeal;
+  const mealArea = meal.strArea;
+  const mealCategory = meal.strCategory;
+  const mealIngredients = await getIngredients(meal);
+  const mealInstructions = meal.strInstructions;
+  const mealThumb = meal.strMealThumb;
+  const mealTags = await getTags(meal.strTags);
+  const mealYoutubeLink = meal.strYoutube;
 
-    // Thumbnail Container
-    const thumbContainer = document.createElement('div');
-    thumbContainer.classList.add('thumbContainer');
+  // Wrapper
+  const cartSection = document.createElement("section");
+  cartSection.classList.add("foodCart");
 
-    // Thumbnail
-    const img = document.createElement('img');
-    img.src = `${mealThumb}/preview`;
-    img.alt = `Meal thumbnail of: ${mealName}`;
-    img.classList.add('mealThumbnail');
+  // Thumbnail Container
+  const thumbContainer = document.createElement("div");
+  thumbContainer.classList.add("thumbContainer");
 
-    // Favorite button
-    const addButton = document.createElement('button');
-    addButton.type = 'button';
-    addButton.textContent = '+';
-    addButton.classList.add('addToFavoritesButton');
-    addButton.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        favoriteMeal(mealId, addButton, e);
-    });
+  // Thumbnail
+  const img = document.createElement("img");
+  img.src = `${mealThumb}`;
+  img.alt = `Meal thumbnail of: ${mealName}`;
+  img.classList.add("mealThumbnail");
 
-    thumbContainer.appendChild(img);
-    thumbContainer.appendChild(addButton);
+  // Favorite button
+  const addButton = document.createElement("button");
+  addButton.type = "button";
+  addButton.textContent = "+";
+  addButton.classList.add("addToFavoritesButton");
+  addButton.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    favoriteMeal(mealId, addButton, e);
+  });
 
-    // Info Container
-    const infoContainer = document.createElement('div');
-    infoContainer.classList.add('infoContainer');
+  thumbContainer.appendChild(img);
+  thumbContainer.appendChild(addButton);
 
-    // Category and Area
-    const categoryAreaArticle = document.createElement('article');
-    categoryAreaArticle.classList.add('categoryArea');
+  // Info Container
+  const infoContainer = document.createElement("div");
+  infoContainer.classList.add("infoContainer");
 
-    // Category
-    const categorySection = document.createElement('section');
-    categorySection.classList.add('category');
-    categorySection.textContent = mealCategory;
+  // Category and Area
+  const categoryAreaArticle = document.createElement("article");
+  categoryAreaArticle.classList.add("categoryArea");
 
-    // Area
-    const areaSection = document.createElement('section');
-    areaSection.classList.add('area');
-    areaSection.textContent = mealArea;
+  // Category
+  const categorySection = document.createElement("section");
+  categorySection.classList.add("category");
+  categorySection.textContent = mealCategory;
 
-    categoryAreaArticle.appendChild(categorySection);
-    categoryAreaArticle.appendChild(areaSection);
+  // Area
+  const areaSection = document.createElement("section");
+  areaSection.classList.add("area");
+  areaSection.textContent = mealArea;
 
-    // Meal name
-    const mealNameHeading = document.createElement('h1');
-    mealNameHeading.classList.add('mealName');
-    mealNameHeading.textContent = mealName;
+  categoryAreaArticle.appendChild(categorySection);
+  categoryAreaArticle.appendChild(areaSection);
 
-    // Instructions
-    const instructionsParagraph = document.createElement('p');
-    instructionsParagraph.classList.add('instructions');
-    instructionsParagraph.textContent = await shortenInstructions(mealInstructions);
+  // Meal name
+  const mealNameHeading = document.createElement("h1");
+  mealNameHeading.classList.add("mealName");
+  mealNameHeading.textContent = mealName;
 
-    infoContainer.appendChild(categoryAreaArticle);
-    infoContainer.appendChild(mealNameHeading);
-    infoContainer.appendChild(instructionsParagraph);
+  // Instructions
+  const instructionsParagraph = document.createElement("p");
+  instructionsParagraph.classList.add("instructions");
+  instructionsParagraph.textContent = await shortenInstructions(
+    mealInstructions
+  );
 
-    cartSection.addEventListener('click', () => openModal(mealName, mealInstructions, mealIngredients));
+  infoContainer.appendChild(categoryAreaArticle);
+  infoContainer.appendChild(mealNameHeading);
+  infoContainer.appendChild(instructionsParagraph);
 
-    cartSection.appendChild(thumbContainer);
-    cartSection.appendChild(infoContainer);
-    cartSection.appendChild(addButton);
+  cartSection.addEventListener("click", () =>
+    openModal(mealName, mealInstructions, mealIngredients)
+  );
 
-    return cartSection;
+  cartSection.appendChild(thumbContainer);
+  cartSection.appendChild(infoContainer);
+  cartSection.appendChild(addButton);
+
+  return cartSection;
 };
 
 const shortenInstructions = async (instructions) => {
-    if (instructions.length > 50) {
-        return instructions.substring(0, 50) + '...';
-    } else {
-        return instructions;
-    }
+  if (instructions.length > 50) {
+    return instructions.substring(0, 50) + "...";
+  } else {
+    return instructions;
+  }
 };
 
 const getIngredients = async (meal) => {
-    const ingredients = [];
-    for (let i = 1; i <= 20; i++) {
-        const ingredient = meal[`strIngredient${i}`];
-        const measure = meal[`strMeasure${i}`];
-        if (ingredient) {
-            ingredients.push({
-                ingredient: ingredient,
-                measure: measure || ''
-            });
-        }
+  const ingredients = [];
+  for (let i = 1; i <= 20; i++) {
+    const ingredient = meal[`strIngredient${i}`];
+    const measure = meal[`strMeasure${i}`];
+    if (ingredient) {
+      ingredients.push({
+        ingredient: ingredient,
+        measure: measure || "",
+      });
     }
-    return ingredients;
+  }
+  return ingredients;
 };
 
 const getTags = async (tags) => {
-    if(!tags){
-        return '';
-    }
-    const tagsArrays = tags.split(',');
-    return tagsArrays.map(tag => tag.trim());
-}; 
+  if (!tags) {
+    return "";
+  }
+  const tagsArrays = tags.split(",");
+  return tagsArrays.map((tag) => tag.trim());
+};
 
 const favoriteMeal = async (mealId, addButton, e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    const userEmail = sessionStorage.getItem('userEmail');
-    if(!userEmail){
-        location.href = '../views/login.html';
-    }
-    const response = await addMealToUser(userEmail, mealId);
-    if (response.status === 200){
-        //TODO Change Tick with "&#10003;"
-        addButton.textContent = '✓';
-        await addItemToLocalStorage(mealId, 'favoritesIdList')
-    }
-}; 
+  e.stopPropagation();
+  e.preventDefault();
+  const userEmail = sessionStorage.getItem("userEmail");
+  if (!userEmail) {
+    location.href = "../views/login.html";
+  }
+  const response = await addMealToUser(userEmail, mealId);
+  if (response.status === 200) {
+    //TODO Change Tick with "&#10003;"
+    addButton.textContent = "✓";
+    await addItemToLocalStorage(mealId, "favoritesIdList");
+  }
+};
 
 // TODO Add the rest of the data to the modal content
 const openModal = (mealName, instructions, ingredients) => {
-    const closeBtn = document.querySelector('dialog#modal span.close');
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
- 
-    const modalMealName = document.getElementById('modalMealName');
-    const modalInstructions = document.getElementById('modalInstructions');
-    const modalIngredients=document.getElementById('modalIngredience');
+  const closeBtn = document.querySelector("dialog#modal span.close");
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
 
+  const modalMealName = document.getElementById("modalMealName");
+  const modalInstructions = document.getElementById("modalInstructions");
+  const modalIngredients = document.getElementById("modalIngredience");
 
-    modalMealName.textContent = mealName;
-    modalIngredients.innerHTML = '';
-    for (const ingredient of ingredients){
-        const elem=document.createElement('p');
-        elem.textContent=ingredient.measure +' '+ ingredient.ingredient;
-        modalIngredients.appendChild(elem);
-    }
+  modalMealName.textContent = mealName;
+  modalIngredients.innerHTML = "";
+  for (const ingredient of ingredients) {
+    const elem = document.createElement("p");
+    elem.textContent = ingredient.measure + " " + ingredient.ingredient;
+    modalIngredients.appendChild(elem);
+  }
 
-    modalInstructions.textContent = instructions;
+  modalInstructions.textContent = instructions;
 
-    modal.style.display = 'block'; 
+  modal.style.display = "block";
 };
-
-
-
