@@ -99,7 +99,7 @@ form {
     box-shadow: var(--box-shadow);
   }
 
-  #login_form {
+  #loginForm {
     display: flex;
     flex-direction: column;
   }
