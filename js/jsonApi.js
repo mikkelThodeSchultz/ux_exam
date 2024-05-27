@@ -11,11 +11,11 @@ export const getUserByEmail = async (userEmail) => {
             throw new Error('User not found');
         }
         const user = userData[0]; 
-        return user
+        return user;
     } catch (error) {
         console.error('Error:', error);
     }
-}
+};
 
 export const addMealToUser = async (userEmail, mealId) => {
     try {

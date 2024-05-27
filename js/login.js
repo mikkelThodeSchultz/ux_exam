@@ -1,6 +1,7 @@
 import { logIn, logout, signUp } from './auth.js';
 
 export const handleLoginAndSignup = () => {
+    
     const setupSignupForm = document.getElementById('signUpForm');
     if (setupSignupForm) {
         setupSignupForm.addEventListener('submit', async (e) => {
@@ -28,7 +29,7 @@ export const handleLoginAndSignup = () => {
                 if (!response) {
                     alert('Wrong email or password');
                 } else if (response.status === 200) {
-                    window.location.href = '';
+                    window.location.href = '../views/favorites.html';
                     alert('User logged in succesfully');
                 }
             } catch (error) {
