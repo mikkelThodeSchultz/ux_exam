@@ -19,6 +19,7 @@ export const createFoodCart = async (mealList) => {
   // Wrapper
   const cartSection = document.createElement("section");
   cartSection.classList.add("foodCart");
+  cartSection.tabIndex='0';
 
   // Thumbnail Container
   const thumbContainer = document.createElement("div");
@@ -84,6 +85,11 @@ export const createFoodCart = async (mealList) => {
   cartSection.addEventListener("click", () =>
     openModal(mealName, mealInstructions, mealIngredients)
   );
+  cartSection.addEventListener("keydown", (e) => {
+    if (e.key === 'Enter') {
+        openModal(mealName, mealInstructions, mealIngredients);
+    }
+  });
 
   cartSection.appendChild(thumbContainer);
   cartSection.appendChild(infoContainer);
@@ -140,10 +146,26 @@ const favoriteMeal = async (mealId, addButton, e) => {
 
 // TODO Add the rest of the data to the modal content
 const openModal = (mealName, instructions, ingredients) => {
-  const closeBtn = document.querySelector("dialog#modal span.close");
+  const modal = document.querySelector("dialog#modal");
+
+  const closeBtn = modal.querySelector("span.close");
+  
+  modal.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      modal.style.display = "none";
+    }
+  })
+
   closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
   });
+
+  closeBtn.addEventListener("keydown", (e) => {
+    if (e.key === 'Enter') {
+      modal.style.display = "none";
+    }
+  });
+  
 
   const modalMealName = document.getElementById("modalMealName");
   const modalInstructions = document.getElementById("modalInstructions");
@@ -158,6 +180,31 @@ const openModal = (mealName, instructions, ingredients) => {
   }
 
   modalInstructions.textContent = instructions;
-
+  
   modal.style.display = "block";
+  modal.focus()
+  trapFocusInModal(modal)
+};
+
+//TODO Maybe this should be moved to another file
+export const trapFocusInModal = (modal) => {
+  const focusableElements = modal.querySelectorAll('li, span[tabindex="0"]');  
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+  modal.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusableElement) {
+          e.preventDefault();
+          lastFocusableElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastFocusableElement) {
+          e.preventDefault();
+          firstFocusableElement.focus();
+        }
+      }
+    }
+  });
 };

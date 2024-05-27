@@ -31,6 +31,10 @@
   cursor: pointer;
 }
 
+.searchAndFilter button:focus{
+  border: 1px solid var(--color-secondary);
+}
+
 h1 {
   text-align: center;
 }
@@ -184,6 +188,10 @@ dialog#categories .close {
   float: right;
   font-size: 2rem;
   cursor: pointer;
+}
+
+.modal .modal-content .close:focus, .addToFavoritesButton:focus{
+  border: 1px solid var(--color-secondary);
 }
 
 @media (min-width: 640px) {

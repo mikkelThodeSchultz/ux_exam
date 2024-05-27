@@ -1,5 +1,5 @@
 import { randomMeal, searchMealByName, listAllCategories, filterByCategory, searchMealById } from './mealApi.js';
-import { createFoodCart } from './foodCart.js';
+import { createFoodCart, trapFocusInModal } from './foodCart.js';
 
 export const handleExplore = () => {
     
@@ -45,6 +45,12 @@ export const handleExplore = () => {
         categoriesCloseButton.addEventListener('click', () => {
             categoriesList.classList.remove('open');
         });
+
+        categoriesCloseButton.addEventListener("keydown", (e) => {
+            if (e.key === 'Enter') {
+                categoriesList.classList.remove('open');
+            }
+          });
     }
 
     const setSearchedMeals = async (meals) => {
@@ -83,9 +89,23 @@ export const handleExplore = () => {
         for (const category of categories) {
             const categoryItem = document.createElement('li');
             categoryItem.innerText = category.strCategory;
+            categoryItem.tabIndex = "0"
             categoryItem.addEventListener('click', handleCategorySelected);
+            categoryItem.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    handleCategorySelected(e)
+                }
+            })
             ol.appendChild(categoryItem);
         }
+        categoriesList.focus()  
+        categoriesList.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                categoriesList.classList.remove('open');
+            }
+          })
+        trapFocusInModal(categoriesList)
+
     };
 
     const setUpExplore = async () => {
