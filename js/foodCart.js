@@ -30,71 +30,101 @@ export const createFoodCart = async (mealList) => {
   img.alt = `Meal thumbnail of: ${mealName}`;
   img.classList.add("mealThumbnail");
 
-  // Favorite button
-  const addButton = document.createElement("button");
-  addButton.type = "button";
-  addButton.textContent = "+";
-  addButton.classList.add("addToFavoritesButton");
+  // Add Button Container
+  const addBtnContainer = document.createElement("div");
+  addBtnContainer.classList.add("addBtnFeatured");
+
+  // Favorite button wide card
+  const addButton = document.createElement("img");
+  addButton.setAttribute("role", "button");
+  addButton.setAttribute("tabindex", "0");
+  addButton.setAttribute("aria-label", "Add to favorites button");
+  addButton.setAttribute("src", "../images/addBtn.svg");
+  addButton.classList.add("addToFavoritesWide");
   addButton.addEventListener("click", async (e) => {
     e.stopPropagation();
     e.preventDefault();
     favoriteMeal(mealId, addButton, e);
   });
+  addButton.addEventListener("keydown", async (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.stopPropagation();
+      e.preventDefault();
+      favoriteMeal(mealId, addButton, e);
+    }
+  });
+
+  addBtnContainer.appendChild(addButton);
 
   thumbContainer.appendChild(img);
-  thumbContainer.appendChild(addButton);
+  thumbContainer.appendChild(addBtnContainer);
 
-  // Info Container
-  const infoContainer = document.createElement("div");
-  infoContainer.classList.add("infoContainer");
+  // Title Container
+  const titleContainer = document.createElement("div");
+  titleContainer.classList.add("title_container");
+
+  // Meal name
+  const mealNameHeading = document.createElement("h3");
+  mealNameHeading.classList.add("foodCart__title");
+  mealNameHeading.textContent = mealName;
 
   // Category and Area
-  const categoryAreaArticle = document.createElement("article");
+  const categoryAreaArticle = document.createElement("div");
   categoryAreaArticle.classList.add("categoryArea");
 
   // Category
-  const categorySection = document.createElement("section");
-  categorySection.classList.add("category");
-  categorySection.textContent = mealCategory;
+  const categoryDiv = document.createElement("div");
+  categoryDiv.textContent = mealCategory;
 
   // Area
-  const areaSection = document.createElement("section");
-  areaSection.classList.add("area");
-  areaSection.textContent = mealArea;
+  const areaDiv = document.createElement("div");
+  areaDiv.textContent = mealArea;
 
-  categoryAreaArticle.appendChild(categorySection);
-  categoryAreaArticle.appendChild(areaSection);
+  categoryAreaArticle.appendChild(categoryDiv);
+  categoryAreaArticle.appendChild(areaDiv);
 
-  // Meal name
-  const mealNameHeading = document.createElement("h1");
-  mealNameHeading.classList.add("mealName");
-  mealNameHeading.textContent = mealName;
+  titleContainer.appendChild(mealNameHeading);
+  titleContainer.appendChild(categoryAreaArticle);
 
   // Instructions
   const instructionsParagraph = document.createElement("p");
-  instructionsParagraph.classList.add("instructions");
+  instructionsParagraph.classList.add("foodCart__description");
   instructionsParagraph.textContent = await shortenInstructions(
     mealInstructions
   );
 
-  infoContainer.appendChild(categoryAreaArticle);
-  infoContainer.appendChild(mealNameHeading);
-  infoContainer.appendChild(instructionsParagraph);
+  // Button Wrapper
+  const buttonWrapper = document.createElement("div");
+  buttonWrapper.classList.add("button_wrapper");
+
+  // Favorite button (Duplicate for the footer)
+  const footerButton = document.createElement("button");
+  footerButton.type = "button";
+  footerButton.textContent = "Add to favorites";
+  footerButton.classList.add("addToFavorites", "button");
+  footerButton.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    favoriteMeal(mealId, footerButton, e);
+  });
+
+  buttonWrapper.appendChild(footerButton);
 
   cartSection.addEventListener("click", () =>
-    openModal(mealName, mealInstructions, mealIngredients)
+    openModal(mealName, mealInstructions, mealIngredients, mealThumb)
   );
 
   cartSection.appendChild(thumbContainer);
-  cartSection.appendChild(infoContainer);
-  cartSection.appendChild(addButton);
+  cartSection.appendChild(titleContainer);
+  cartSection.appendChild(instructionsParagraph);
+  cartSection.appendChild(buttonWrapper);
 
   return cartSection;
 };
 
 const shortenInstructions = async (instructions) => {
-  if (instructions.length > 50) {
-    return instructions.substring(0, 50) + "...";
+  if (instructions.length > 200) {
+    return instructions.substring(0, 200) + "...";
   } else {
     return instructions;
   }
@@ -132,32 +162,34 @@ const favoriteMeal = async (mealId, addButton, e) => {
   }
   const response = await addMealToUser(userEmail, mealId);
   if (response.status === 200) {
-    //TODO Change Tick with "&#10003;"
     addButton.textContent = "✓";
     await addItemToLocalStorage(mealId, "favoritesIdList");
   }
 };
 
-// TODO Add the rest of the data to the modal content
-const openModal = (mealName, instructions, ingredients) => {
+const openModal = (mealName, instructions, ingredients, mealThumb) => {
+  const modal = document.getElementById("modal");
   const closeBtn = document.querySelector("dialog#modal span.close");
   closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
   });
 
+  const modalThumbnail = modal.querySelector("img");
   const modalMealName = document.getElementById("modalMealName");
   const modalInstructions = document.getElementById("modalInstructions");
   const modalIngredients = document.getElementById("modalIngredience");
 
+  modalThumbnail.src = mealThumb;
+  modalThumbnail.alt = `Meal thumbnail of: ${mealName}`;
   modalMealName.textContent = mealName;
   modalIngredients.innerHTML = "";
   for (const ingredient of ingredients) {
-    const elem = document.createElement("p");
+    const elem = document.createElement("li");
     elem.textContent = ingredient.measure + " " + ingredient.ingredient;
     modalIngredients.appendChild(elem);
   }
 
   modalInstructions.textContent = instructions;
 
-  modal.style.display = "block";
+  modal.style.display = "flex";
 };

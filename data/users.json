@@ -36,10 +36,28 @@
       ]
     },
     {
-      "id": "6848",
-      "email": "CCsquele@hotmail.com",
-      "password": "Password1!",
-      "favourites_id": []
+      "id": "1ee2",
+      "email": "fisken@fisken.com",
+      "password": "Hejsa123!",
+      "favourites_id": [
+        53057,
+        52914,
+        52850,
+        52982,
+        52953,
+        53056,
+        53023,
+        53043,
+        52909,
+        53018,
+        53029,
+        52776,
+        53065,
+        52867,
+        52966,
+        53008,
+        52885
+      ]
     }
   ]
 }
