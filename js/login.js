@@ -1,6 +1,8 @@
-import { logIn, logout, signUp } from './auth.js';
+import { logIn, logout, signUp, showAlert } from './auth.js';
 
 export const handleLoginAndSignup = () => {
+
+   
     
     const setupSignupForm = document.getElementById('signUpForm');
     if (setupSignupForm) {
@@ -11,7 +13,7 @@ export const handleLoginAndSignup = () => {
                 const response = await signUp(formData);
                 if (response.status === 201) {
                     window.location.href = '../views/login.html';
-                    alert('User have been created succesfully');
+                    showAlert('User have been created succesfully');
                 }
             } catch (error) {
                 console.log(error);
@@ -27,10 +29,10 @@ export const handleLoginAndSignup = () => {
             try {
                 const response = await logIn(formData);
                 if (!response) {
-                    alert('Wrong email or password');
+                    showAlert('Wrong email or password');
                 } else if (response.status === 200) {
-                    window.location.href = '../views/favorites.html';
-                    alert('User logged in succesfully');
+                    //window.location.href = '../views/favorites.html';
+                    showAlert('User logged in succesfully');
                 }
             } catch (error) {
                 console.log(error);
