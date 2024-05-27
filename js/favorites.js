@@ -14,7 +14,7 @@ export const setUpFavorites = async () => {
     mealsContainer.innerHTML = "";
     for (let index = 0; index < userFavoritesList.length; index++) {
       const meal = await searchMealById(userFavoritesList[index])
-      const foodCard = await createFoodCart(meal,'favorites');
+      const foodCard = await createFoodCart(meal);
       mealsContainer.appendChild(foodCard);
     } 
 };

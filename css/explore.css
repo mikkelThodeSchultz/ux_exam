@@ -190,6 +190,9 @@ dialog#categories .close {
   padding: 1rem;
   border-radius: 10px;
   white-space: pre-wrap;
+  
+    position: relative;
+  
 }
 
 .modal .modal-content .close {
@@ -197,6 +200,36 @@ dialog#categories .close {
   float: right;
   font-size: 2rem;
   cursor: pointer;
+}
+
+
+#modalButtonsContainer 
+.removeFromFavoritesButton {
+  background-color: var(--color-warning);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-md);
+  position: absolute;
+  border: none;
+  padding: 5px 8px;
+  border-radius: var(--border-radius-input);
+  cursor: pointer;
+  top: 0;
+  right: 0;
+}
+
+
+#modalButtonsContainer 
+.addToFavoritesButton {
+  background-color: var(--color-positive);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-md);
+  position: absolute;
+  border: none;
+  padding: 5px 8px;
+  border-radius: var(--border-radius-input);
+  cursor: pointer;
+  top: 0;
+  right: 0;
 }
 
 @media (min-width: 640px) {
@@ -215,7 +248,6 @@ dialog#categories .close {
   #mealsContainer
     .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) {
     grid-column: span 2;
-
     display: grid;
     grid-template-areas:
       "thumbnail info info info"
@@ -256,7 +288,7 @@ dialog#categories .close {
 
   #mealsContainer
     .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33))
-    .addToFavoritesButton {
+    .buttonsContainer .addToFavoritesButton {
     grid-area: button;
     align-self: center;
     width: 100%;
@@ -271,8 +303,21 @@ dialog#categories .close {
   }
 
   #mealsContainer
+  .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33))
+  .buttonsContainer .addToFavoritesButton {
+  
+  width: 100%;
+  background-color: var(--color-food-category-box);
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-md);
+  border: none;
+  border-radius: var(--border-radius-input);
+  cursor: pointer;
+}
+
+  #mealsContainer
     .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33))
-    .addToFavoritesButton::after {
+    .buttonsContainer .addToFavoritesButton::after {
     content: " Add to favorites";
     color: var(--color-secondary);
     background-color: none;
@@ -335,7 +380,7 @@ dialog#categories .close {
 
   #mealsContainer
     .foodCart:nth-child(6n + 2):not(:nth-child(26))
-    .addToFavoritesButton {
+    .buttonsContainer .addToFavoritesButton {
     grid-area: button;
     align-self: center;
     width: 100%;
@@ -351,7 +396,7 @@ dialog#categories .close {
 
   #mealsContainer
     .foodCart:nth-child(6n + 2):not(:nth-child(26))
-    .addToFavoritesButton::after {
+    .buttonsContainer .addToFavoritesButton::after {
     content: " Add to favorites";
     color: var(--color-secondary);
     background-color: none;
@@ -391,3 +436,4 @@ dialog#categories .close {
     grid-template-columns: repeat(6, 1fr);
   }
 }
+

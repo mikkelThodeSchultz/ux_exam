@@ -15,14 +15,14 @@
     <header>
         <nav>
             <div>
-                <a href="../"><img src="../images/logo-ux.svg" alt="Logo"></a>
-                <a href="../views/explore.html">Explore</a>
-                <a href="../views/favorites.html">Favorites</a>
+                <a href="../" title="Return to home page"><img src="../images/logo-ux.svg" alt="Logo"></a>
+                <a href="../views/explore.html" title="Explore various recipes">Explore</a>
+                <a href="../views/favorites.html" title="View your favorite recipes">Favorites</a>
             </div>
             <div>
-                <a id="signUpBtn" href="../views/signup.html">Sign up</a>
-                <a id="loginBtn" href="../views/login.html">Login</a>
-                <a id="logOutBtn" href="../">Logout</a>
+                <a id="signUpBtn" href="../views/signup.html" title="Sign up to create an account">Sign up</a>
+                <a id="loginBtn" href="../views/login.html" title="Log in to your account">Login</a>
+                <a id="logOutBtn" href="../" title="Log out from your account">Logout</a>
             </div>
         </nav>
     </header>
@@ -35,7 +35,7 @@
                 <input id="searchInput" type="text" placeholder="Search &#x1F50E;&#xFE0E;">
                 <!-- <button type="submit">Search</button> -->
             </form>
-            <button id="showCategories">Categories <img src="../images/cat-icon-ux.svg" alt=""></button>
+            <button id="showCategories">Categories <img src="../images/cat-icon-ux.svg" alt="Filter on category icon"></button>
         </section>
 
         <dialog id="categories">
@@ -51,10 +51,12 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2 id="modalMealName"></h2>
-                <p id="modalIngredience"></p>
+                <p id="modalIngredients"></p>
                 <p id="modalInstructions"></p>
+                <div id="modalButtonsContainer"></div> 
             </div>
         </dialog>
+        
 
     </main>
 

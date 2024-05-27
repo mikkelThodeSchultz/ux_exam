@@ -1,7 +1,7 @@
 import { addItemToLocalStorage,removeItemFromLocalStorage } from "./auth.js";
 import { addMealToUser,removeMealFromUser } from "./jsonApi.js";
 
-export const createFoodCart = async (mealList, mode = 'explore') => {
+export const createFoodCart = async (mealList) => {
   const meal =
     mealList && mealList.meals && mealList.meals[0]
       ? mealList.meals[0]
@@ -19,6 +19,7 @@ export const createFoodCart = async (mealList, mode = 'explore') => {
   // Wrapper
   const cartSection = document.createElement("section");
   cartSection.classList.add("foodCart");
+  cartSection.setAttribute('data-meal-id', mealId);
 
   // Thumbnail Container
   const thumbContainer = document.createElement("div");
@@ -34,36 +35,36 @@ export const createFoodCart = async (mealList, mode = 'explore') => {
   const buttonsContainer = document.createElement("div");
   buttonsContainer.classList.add("buttonsContainer");
 
-  if (mode === 'explore') {
-    // Add button
-    const addButton = document.createElement("button");
-    addButton.type = "button";
-    addButton.textContent = "+";
-    addButton.classList.add("addToFavoritesButton");
-    addButton.setAttribute("aria-label", "Add to favorites");
-    addButton.addEventListener("click", async (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-      favoriteMeal(mealId, addButton, e);
-    });
-    buttonsContainer.appendChild(addButton);
-  } else if (mode === 'favorites') {
+  if (isMealInFavorites(Number(mealId))) {
     // Remove button
     const removeButton = document.createElement("button");
     removeButton.type = "button";
-    removeButton.textContent = "-";
+    removeButton.textContent = '-';
     removeButton.classList.add("removeFromFavoritesButton");
     removeButton.setAttribute("aria-label", "Remove from favorites");
     removeButton.addEventListener("click", async (e) => {
       e.stopPropagation();
       e.preventDefault();
-      removeFavorite(mealId, removeButton, e);
+      await removeFavorite(mealId, removeButton, e);
     });
     buttonsContainer.appendChild(removeButton);
+  } else {
+    // Add button
+    const addButton = document.createElement("button");
+    addButton.type = "button";
+    addButton.textContent = '+';
+    addButton.classList.add("addToFavoritesButton");
+    addButton.setAttribute("aria-label", "Add to favorites");
+    addButton.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      await favoriteMeal(mealId, addButton, e);
+    });
+    buttonsContainer.appendChild(addButton);
   }
 
   thumbContainer.appendChild(img);
-  thumbContainer.appendChild(buttonsContainer);
+ 
 
   // Info Container
   const infoContainer = document.createElement("div");
@@ -103,14 +104,16 @@ export const createFoodCart = async (mealList, mode = 'explore') => {
   infoContainer.appendChild(instructionsParagraph);
 
   cartSection.addEventListener("click", () =>
-    openModal(mealName, mealInstructions, mealIngredients)
+    openModal(mealId, mealName, mealInstructions, mealIngredients)
   );
 
   cartSection.appendChild(thumbContainer);
   cartSection.appendChild(infoContainer);
-
+  cartSection.appendChild(buttonsContainer)
+  
   return cartSection;
 };
+
 
 const shortenInstructions = async (instructions) => {
   if (instructions.length > 50) {
@@ -161,7 +164,8 @@ const favoriteMeal = async (mealId, addButton, e) => {
 
 
 // TODO Add the rest of the data to the modal content
-const openModal = (mealName, instructions, ingredients) => {
+const openModal = (mealId, mealName, instructions, ingredients) => {
+  const modal = document.getElementById("modal");
   const closeBtn = document.querySelector("dialog#modal span.close");
   closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
@@ -169,7 +173,8 @@ const openModal = (mealName, instructions, ingredients) => {
 
   const modalMealName = document.getElementById("modalMealName");
   const modalInstructions = document.getElementById("modalInstructions");
-  const modalIngredients = document.getElementById("modalIngredience");
+  const modalIngredients = document.getElementById("modalIngredients");
+  const modalButtonsContainer = document.getElementById("modalButtonsContainer");
 
   modalMealName.textContent = mealName;
   modalIngredients.innerHTML = "";
@@ -181,7 +186,43 @@ const openModal = (mealName, instructions, ingredients) => {
 
   modalInstructions.textContent = instructions;
 
+  // Clear previous buttons
+  modalButtonsContainer.innerHTML = '';
+
+  if (isMealInFavorites(Number(mealId))) {
+    // Remove button
+    const removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.textContent = '-';
+    removeButton.classList.add('removeFromFavoritesButton');
+    removeButton.setAttribute("aria-label", "Remove from favorites");
+    removeButton.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      removeFavorite(mealId, removeButton, e);
+    });
+    modalButtonsContainer.appendChild(removeButton);
+  } else {
+    // Add button
+    const addButton = document.createElement('button');
+    addButton.type = 'button';
+    addButton.textContent = '+';
+    addButton.classList.add('addToFavoritesButton');
+    addButton.setAttribute("aria-label", "Add to favorites");
+    addButton.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      favoriteMeal(mealId, addButton, e);
+    });
+    modalButtonsContainer.appendChild(addButton);
+  }
+
   modal.style.display = "block";
+};
+
+const isMealInFavorites = (mealId) => {
+  const favorites = JSON.parse(localStorage.getItem("favoritesIdList")) || [];
+  return favorites.includes(mealId);
 };
 
 
@@ -202,3 +243,4 @@ const removeFavorite = async (mealId, addButton, e) => {
     console.log(response, mealId);
   }
 };
+
