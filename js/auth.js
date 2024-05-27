@@ -92,7 +92,28 @@ export const saveListToLocalStorage = async (list) => {
 export const addItemToLocalStorage = async (item, key) => {
     console.log(item);
     console.log(key);
+    const itemId = Number(item);
     const getList = JSON.parse(localStorage.getItem(key));
-    getList.push(item);
+    getList.push(itemId);
     localStorage.setItem(key, JSON.stringify(getList))
-}
+};
+
+export const removeItemFromLocalStorage = async (item,localStorageKey) => {
+    console.log(item);
+   
+    console.log(localStorageKey);
+
+    const itemId = Number(item);
+
+        let mealList = JSON.parse(localStorage.getItem(localStorageKey));
+        console.log('1:'+ mealList)
+        
+        const mealToRemove = mealList.indexOf(itemId);
+        if (mealToRemove > -1) {
+            mealList = mealList.toSpliced(mealToRemove, 1);
+        }
+        console.log('2:'+mealList)
+        localStorage.setItem(localStorageKey, JSON.stringify(mealList));
+    };
+    
+

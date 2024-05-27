@@ -1,5 +1,5 @@
-import { addItemToLocalStorage } from "./auth.js";
-import { addMealToUser } from "./jsonApi.js";
+import { addItemToLocalStorage,removeItemFromLocalStorage } from "./auth.js";
+import { addMealToUser,removeMealFromUser } from "./jsonApi.js";
 
 export const createFoodCart = async (mealList) => {
   const meal =
@@ -40,9 +40,18 @@ export const createFoodCart = async (mealList) => {
     e.preventDefault();
     favoriteMeal(mealId, addButton, e);
   });
-
+  const removeButton = document.createElement("button");
+  removeButton.type = "button"; // 
+  removeButton.textContent = "-";
+  removeButton.classList.add("removeFromFavoritesButton");
+  removeButton.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    removeFavorite(mealId, removeButton, e);
+  });
   thumbContainer.appendChild(img);
   thumbContainer.appendChild(addButton);
+  thumbContainer.appendChild(removeButton);
 
   // Info Container
   const infoContainer = document.createElement("div");
@@ -88,6 +97,7 @@ export const createFoodCart = async (mealList) => {
   cartSection.appendChild(thumbContainer);
   cartSection.appendChild(infoContainer);
   cartSection.appendChild(addButton);
+  cartSection.appendChild(removeButton);
 
   return cartSection;
 };
@@ -138,6 +148,7 @@ const favoriteMeal = async (mealId, addButton, e) => {
   }
 };
 
+
 // TODO Add the rest of the data to the modal content
 const openModal = (mealName, instructions, ingredients) => {
   const closeBtn = document.querySelector("dialog#modal span.close");
@@ -160,4 +171,24 @@ const openModal = (mealName, instructions, ingredients) => {
   modalInstructions.textContent = instructions;
 
   modal.style.display = "block";
+};
+
+
+
+const removeFavorite = async (mealId, addButton, e) => {
+  e.stopPropagation();
+  e.preventDefault();
+  const userEmail = sessionStorage.getItem("userEmail");
+  if (!userEmail) {
+    location.href = "../views/login.html";
+  }
+  await removeItemFromLocalStorage(mealId, "favoritesIdList");
+  const response = await removeMealFromUser(userEmail, mealId);
+  if (response.status === 200) {
+    //TODO Change Tick with "&#10003;"
+    addButton.textContent = "?";
+    
+  } else {
+    console.log(response, mealId);
+  }
 };
