@@ -10,21 +10,21 @@ function validatePassword(password){
 }
 
 const validateFormData = async (formData) => {
-    if(formData.get('user_email')){
-        const email = formData.get('user_email');
+    if(formData.get('userEmail')){
+        const email = formData.get('userEmail');
         if(!validateEmail(email)){
             alert('Must be a proper email.');
             return false;
         }
     }
-    if(formData.get('user_password')){
-        const password = formData.get('user_password');
+    if(formData.get('userPassword')){
+        const password = formData.get('userPassword');
         if(!validatePassword(password)){
             alert('The password must be between 8 and 20 characters, and contain lowercase and uppercase letters, numbers, and special characters.');
             return false;
         }
-        if(formData.get('user_password_confirm')){
-            const confirmPassword = formData.get('user_password_confirm');
+        if(formData.get('userPasswordConfirm')){
+            const confirmPassword = formData.get('userPasswordConfirm');
             if(password !== confirmPassword){
                 alert('The password must match with confirm password.');
                 return false;
@@ -39,8 +39,8 @@ export const signUp = async (formData) => {
     if(!await validateFormData(formData)){
         return;
     }
-    const userEmail = formData.get('user_email');
-    const userPassword = formData.get('user_password');
+    const userEmail = formData.get('userEmail');
+    const userPassword = formData.get('userPassword');
     const user = {
         email: userEmail,
         password: userPassword,
@@ -65,8 +65,8 @@ export const logIn = async (formData) => {
     if(!await validateFormData(formData)){
         return;
     }
-    const userEmail = formData.get('user_email');
-    const userPassword = formData.get('user_password');
+    const userEmail = formData.get('userEmail');
+    const userPassword = formData.get('userPassword');
     try {
         const response = await fetch(`http://localhost:3000/users?email=${userEmail}&password=${userPassword}`);
         const data = await response.json();
