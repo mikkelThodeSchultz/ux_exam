@@ -19,6 +19,9 @@
   --color-info: #3b82f6; /* Blue */
   --color-light: #f3f4f6; /* Gray */
   --color-link: #00e; /* Link blue */
+  --color-food-area-box: rgba(85, 109, 228, 0.4);
+  --color-food-category-box: rgba(47, 235, 88, 0.4);
+  --color-blur-backgrund: rgba(79, 75, 75, 0.211); /*transparent gray*/
   --color-category-hover: rgb(56, 55, 55);
   --border-forms: 0.4rem solid #50bb50;
   --border-input: 0.1rem solid #c3d2c3;
