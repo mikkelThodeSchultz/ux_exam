@@ -1,5 +1,37 @@
+/* Explore */
+.searchAndFilter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background-color: #ffffff;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-btn);
+}
+
+.searchAndFilter input {
+  padding: 0.5rem;
+  border-radius: var(--border-radius-search-field);
+  border: none;
+}
+
+.searchAndFilter button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-base);
+  color: var(--color-secondary);
+  border: none;
+  background-color: #ffffff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
 h1 {
-  font: var(--font-h1);
   text-align: center;
 }
 

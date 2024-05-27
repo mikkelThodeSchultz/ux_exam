@@ -7,9 +7,11 @@
     <title>Home</title>
     <script src="../js/app.js" type="module"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
-<main>
+<body>
+
     <header>
         <nav>
             <div>
@@ -25,18 +27,36 @@
         </nav>
     </header>
 
-    <body>
-        <article id="home_wrapper">
-            <section id="home_text">
-                <h1>Welcome to the Jungle of Flavors!</h1>
-                <p>I'm baby green juice organic hammock DSA single-origin coffee cold-pressed blue bottle roof party af.
-                    Hella flexitarian vinyl, seitan lyft next level drinking vinegar four dollar toast readymade.</p>
-                <a href="../views/signup.html"><button>Start the adventure!</button></a>
 
-            </section>
-            <section><img src="../images/home-ux.svg" alt="Home hero illustration"></section>
-        </article>
-    </body>
-</main>
+    <main>
+        <section id="home_wrapper">
+            <article id="home_text">
+                <h1 aria-label="Welcome to the Jungle of Flavors!">
+                    Welcome to the Jungle of <br />
+                    <span class="wave">F</span>
+                    <span class="wave">l</span>
+                    <span class="wave">a</span>
+                    <span class="wave">v</span>
+                    <span class="wave">o</span>
+                    <span class="wave">r</span>
+                    <span class="wave">s</span>
+                    <span class="wave">!</span>
+                </h1>
+                <p>
+                    Unleash your inner chef with FeastBeast! Discover mouth-watering
+                    recipes, master new culinary skills, and turn every meal into a
+                    feast. Start your delicious journey today!
+                </p>
+                <a href="../views/signup.html">Start the adventure!</a>
+            </article>
+            <article id="hero_image">
+                <img src="../images/hero_image_1.svg" alt="" />
+            </article>
+        </section>
+    </main>
+
+
+</body>
+
 
 </html>
