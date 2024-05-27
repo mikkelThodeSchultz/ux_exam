@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
 @font-face {
-  font-family: "Poleno", "Arial, 'Sans-serif'";
+  font-family: "Poleno";
   src: url("../fonts/PolenoBlack.woff2") format("woff2");
 }
 
@@ -53,8 +53,10 @@
   --font-size-mobile-md: 1.2rem;
   --font-size-mobile-sm: 0.833rem;
   --font-size-mobile-tiny: 0.694rem;
-  --font-h1: "Poleno";
-  --font-base: "Poppins";
+
+  --font-h1: "Poleno", Arial, sans-serif;
+  --font-base: "Poppins", Arial, sans-serif;
+
   --font-weight-base: 400;
   --font-weight-md: 500;
   --font-weight-thick: 700;
