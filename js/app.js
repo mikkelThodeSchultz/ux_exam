@@ -18,7 +18,7 @@ const checkSite = () => {
     }
     if (currentUrl === homePageUrl) {
         // Event listener to run the function when the DOM is fully loaded
-        window.addEventListener('DOMContentLoaded', (event) => {
+        window.addEventListener('DOMContentLoaded', () => {
             updateAdventureLink();
         });
     }
@@ -39,13 +39,13 @@ if (sessionStorage === null || sessionStorage.getItem('userEmail') === null) {
 
 
 const updateAdventureLink = () => {
-    const userEmail = sessionStorage.getItem("userEmail");
-    const adventureLink = document.getElementById("adventureLink");
+    const userEmail = sessionStorage.getItem('userEmail');
+    const adventureLink = document.getElementById('adventureLink');
     if (userEmail) {
         // User is logged in, update link to explore page
-        adventureLink.href = "../views/explore.html";
-        adventureLink.textContent = "Start the adventure!";
-        adventureLink.title = "Explore the recipes available";
+        adventureLink.href = '../views/explore.html';
+        adventureLink.textContent = 'Start the adventure!';
+        adventureLink.title = 'Explore the recipes available';
        
     }
 };

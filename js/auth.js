@@ -10,17 +10,17 @@ function validatePassword(password){
 }
 
 export const showAlert = (text) => {
-    const modal = document.getElementById("alertModal");
-    const message = document.getElementById("alertModalMessage");
-    const closeBtn = document.querySelector("#alertModal span.close");
+    const modal = document.getElementById('alertModal');
+    const message = document.getElementById('alertModalMessage');
+    const closeBtn = document.querySelector('#alertModal span.close');
 
-    closeBtn.addEventListener("click", () => {
-        message.innerText = "";
-        modal.style.display = "none";
+    closeBtn.addEventListener('click', () => {
+        message.innerText = '';
+        modal.style.display = 'none';
     });
 
     message.innerText = text;
-    modal.style.display = "block";
+    modal.style.display = 'block';
 
 };
 const validateFormData = async (formData) => {
@@ -86,7 +86,7 @@ export const logIn = async (formData) => {
         const data = await response.json();
         if (data){
             sessionStorage.setItem('userEmail', data[0].email);
-            await saveListToLocalStorage(data[0].favourites_id)
+            await saveListToLocalStorage(data[0].favourites_id);
         } 
         return response;
     } catch (error) {
@@ -104,30 +104,22 @@ export const saveListToLocalStorage = async (list) => {
 };
 
 export const addItemToLocalStorage = async (item, key) => {
-    console.log(item);
-    console.log(key);
     const itemId = Number(item);
     const getList = JSON.parse(localStorage.getItem(key));
     getList.push(itemId);
-    localStorage.setItem(key, JSON.stringify(getList))
+    localStorage.setItem(key, JSON.stringify(getList));
 };
 
 export const removeItemFromLocalStorage = async (item,localStorageKey) => {
-    console.log(item);
-   
-    console.log(localStorageKey);
-
     const itemId = Number(item);
-
-        let mealList = JSON.parse(localStorage.getItem(localStorageKey));
-        console.log('1:'+ mealList)
-        
-        const mealToRemove = mealList.indexOf(itemId);
-        if (mealToRemove > -1) {
-            mealList = mealList.toSpliced(mealToRemove, 1);
-        }
-        console.log('2:'+mealList)
-        localStorage.setItem(localStorageKey, JSON.stringify(mealList));
-    };
+    let mealList = JSON.parse(localStorage.getItem(localStorageKey));
+     
+    const mealToRemove = mealList.indexOf(itemId);
+    if (mealToRemove > -1) {
+        mealList = mealList.toSpliced(mealToRemove, 1);
+    }
+  
+    localStorage.setItem(localStorageKey, JSON.stringify(mealList));
+};
     
 
