@@ -140,10 +140,11 @@ export const createFoodCart = async (mealList) => {
             await favoriteMeal(mealId, footerButton, e);
         });
     
-    footerButton.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        favoriteMeal(mealId, footerButton, e);      }
-  })
+        footerButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                favoriteMeal(mealId, footerButton, e);      
+            }
+        });
 
         buttonWrapper.appendChild(footerButton);
     }
@@ -153,10 +154,10 @@ export const createFoodCart = async (mealList) => {
         openModal(mealId, mealName, mealInstructions, mealIngredients, mealThumb)
     );
 
-    cartSection.addEventListener("keydown", (e) => {
-      if (e.key === 'Enter') {
-        openModal(mealId, mealName, mealInstructions, mealIngredients, mealThumb)
-      }
+    cartSection.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            openModal(mealId, mealName, mealInstructions, mealIngredients, mealThumb);
+        }
     });
 
     cartSection.appendChild(thumbContainer);
@@ -212,10 +213,10 @@ const openModal = (mealId, mealName, instructions, ingredients, mealThumb) => {
         modal.style.display = 'none';
     });
 
-    closeBtn.addEventListener("keydown", (e) => {
-      if (e.key === 'Enter') {
-        modal.style.display = "none";
-      }
+    closeBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            modal.style.display = 'none';
+        }
     });
 
     modal.addEventListener('keydown', (e) => {
@@ -272,8 +273,8 @@ const openModal = (mealId, mealName, instructions, ingredients, mealThumb) => {
     }
 
     modal.style.display = 'flex';
-    modal.focus()
-    trapFocusInModal(modal)
+    modal.focus();
+    trapFocusInModal(modal);
     
 };
 
