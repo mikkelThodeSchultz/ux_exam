@@ -27,6 +27,7 @@ input {
   margin: 0 auto;
   border-radius: var(--border-radius-card);
   outline: 2px solid var(--color-category-hover);
+  position: relative;
 }
 #searchForMeal input {
   width: 100%;
@@ -68,57 +69,49 @@ dialog#categories {
   display: none;
 }
 
-dialog#categories.open {
+#categories.open {
   display: block;
+  position: absolute;
+  top: 10px;
+  left: calc(50% - 150px);
   z-index: 100;
-  width: 100%;
-  overflow: auto;
+  width: 300px;
   border: none;
   border-radius: var(--border-radius-card);
   background-color: var(--color-primary);
-  padding: 1rem;
+  padding: var(--spacing-4);
   box-shadow: var(--box-shadow);
+  box-shadow: 0 0 0 500vmax rgba(0, 0, 0, 0.5);
 }
 
 dialog#categories ol {
   display: grid;
   grid-template-columns: 1fr 1fr;
   list-style: none;
-  gap: var(--spacing-8);
+  gap: var(--spacing-2);
 }
 
 dialog#categories ol li {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: fit-content;
   cursor: pointer;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--border-radius-card);
 }
 
 dialog#categories ol li:hover {
   color: var(--color-category-hover);
+  background-color: var(--color-food-area-box);
 }
 
 dialog#categories .close {
   position: absolute;
-  top: 0.3rem;
-  right: 1rem;
+  top: -20px;
+  right: -20px;
   font-size: 2rem;
   cursor: pointer;
-}
-
-@media (min-width: 640px) {
-  dialog#categories.open {
-    width: 80%;
-  }
-}
-
-@media (min-width: 980px) {
-  dialog#categories.open {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1234px) {
-  dialog#categories.open {
-    width: 40%;
-  }
 }
 
 .wrapper {

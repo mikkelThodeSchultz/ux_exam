@@ -34,6 +34,13 @@ nav #logOutBtn {
   border-radius: var(--border-radius-btn);
   padding: 0.5rem 1rem;
   cursor: pointer;
+  transition: all var(--transition-duration-150) var(--transition-ease-in-out);
+}
+
+#signUpBtn:hover,
+nav #logOutBtn:hover {
+  transform: var(--transform-btn);
+  box-shadow: var(--box-shadow);
 }
 
 @media (max-width: 1000px) {
