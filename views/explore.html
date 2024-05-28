@@ -11,39 +11,42 @@
 </head>
 
 <body>
-  <header>
-    <nav>
-      <div>
-        <a href="../"><img src="../images/logo-ux.svg" alt="Logo" /></a>
-        <a href="../views/explore.html">Explore</a>
-        <a href="../views/favorites.html">Favorites</a>
-      </div>
-      <div>
-        <a id="signUpBtn" href="../views/signup.html">Sign up</a>
-        <a id="loginBtn" href="../views/login.html">Login</a>
-        <a id="logOutBtn" href="../">Logout</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <h1 class="center">Browse Recipies</h1>
 
-    <form id="searchForMeal">
-      <input id="searchInput" type="text" placeholder="Search &#x1F50E;&#xFE0E;" />
-      <!-- <button type="submit">Search</button> -->
-      <button id="showCategories">
-        Categories <img src="../images/cat-icon-ux.svg" alt="" />
-      </button>
-      <dialog id="categories">
-        <span class="close" tabindex="0">&times;</span>
-        <ol></ol>
-      </dialog>
-    </form>
+    <header>
+        <nav>
+            <div>
+                <a href="../" title="Return to home page"><img src="../images/logo-ux.svg" alt="Logo"></a>
+                <a href="../views/explore.html" title="Explore various recipes">Explore</a>
+                <a href="../views/favorites.html" title="View your favorite recipes">Favorites</a>
+            </div>
+            <div>
+                <a id="signUpBtn" href="../views/signup.html" title="Sign up to create an account">Sign up</a>
+                <a id="loginBtn" href="../views/login.html" title="Log in to your account">Login</a>
+                <a id="logOutBtn" href="../" title="Log out from your account">Logout</a>
+            </div>
+        </nav>
+    </header>
 
-    <div class="wrapper">
-      <section id="mealsContainer"></section>
-    </div>
+    <main>
+
+        <h1 class="center">Browse Recipies</h1>
+        <section class="searchAndFilter">
+            <form id="searchForMeal">
+                <input id="searchInput" type="text" placeholder="Search &#x1F50E;&#xFE0E;">
+                <!-- <button type="submit">Search</button> -->
+            </form>
+            <button id="showCategories">Categories <img src="../images/cat-icon-ux.svg" alt="Filter on category icon"></button>
+        </section>
+
+        <dialog id="categories">
+            <span class="close">&times;</span>
+            <ol></ol>
+        </dialog>
+
+        <section id="mealsContainer">
+
+        </section>
 
     <dialog id="modal" class="modal">
       <div class="modal-content">

@@ -9,24 +9,38 @@ function validatePassword(password){
     return PASSWORD_REGEX.test(password);
 }
 
+export const showAlert = (text) => {
+    const modal = document.getElementById('alertModal');
+    const message = document.getElementById('alertModalMessage');
+    const closeBtn = document.querySelector('#alertModal span.close');
+
+    closeBtn.addEventListener('click', () => {
+        message.innerText = '';
+        modal.style.display = 'none';
+    });
+
+    message.innerText = text;
+    modal.style.display = 'block';
+
+};
 const validateFormData = async (formData) => {
     if(formData.get('userEmail')){
         const email = formData.get('userEmail');
         if(!validateEmail(email)){
-            alert('Must be a proper email.');
+            showAlert('Must be a proper email.');
             return false;
         }
     }
     if(formData.get('userPassword')){
         const password = formData.get('userPassword');
         if(!validatePassword(password)){
-            alert('The password must be between 8 and 20 characters, and contain lowercase and uppercase letters, numbers, and special characters.');
+            showAlert('The password must be between 8 and 20 characters, and contain lowercase and uppercase letters, numbers, and special characters.');
             return false;
         }
         if(formData.get('userPasswordConfirm')){
             const confirmPassword = formData.get('userPasswordConfirm');
             if(password !== confirmPassword){
-                alert('The password must match with confirm password.');
+                showAlert('The password must match with confirm password.');
                 return false;
             }
         }
@@ -72,7 +86,7 @@ export const logIn = async (formData) => {
         const data = await response.json();
         if (data){
             sessionStorage.setItem('userEmail', data[0].email);
-            await saveListToLocalStorage(data[0].favourites_id)
+            await saveListToLocalStorage(data[0].favourites_id);
         } 
         return response;
     } catch (error) {
@@ -90,9 +104,22 @@ export const saveListToLocalStorage = async (list) => {
 };
 
 export const addItemToLocalStorage = async (item, key) => {
-    console.log(item);
-    console.log(key);
+    const itemId = Number(item);
     const getList = JSON.parse(localStorage.getItem(key));
-    getList.push(item);
-    localStorage.setItem(key, JSON.stringify(getList))
-}
+    getList.push(itemId);
+    localStorage.setItem(key, JSON.stringify(getList));
+};
+
+export const removeItemFromLocalStorage = async (item,localStorageKey) => {
+    const itemId = Number(item);
+    let mealList = JSON.parse(localStorage.getItem(localStorageKey));
+     
+    const mealToRemove = mealList.indexOf(itemId);
+    if (mealToRemove > -1) {
+        mealList = mealList.toSpliced(mealToRemove, 1);
+    }
+  
+    localStorage.setItem(localStorageKey, JSON.stringify(mealList));
+};
+    
+

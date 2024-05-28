@@ -16,14 +16,14 @@
     <header>
         <nav>
             <div>
-                <a href="../"><img src="../images/logo-ux.svg" alt="Logo"></a>
-                <a href="../views/explore.html">Explore</a>
-                <a href="../views/favorites.html">Favorites</a>
+                <a href="../" title="Return to home page"><img src="../images/logo-ux.svg" alt="Logo"></a>
+                <a href="../views/explore.html" title="Explore various recipes">Explore</a>
+                <a href="../views/favorites.html" title="View your favorite recipes">Favorites</a>
             </div>
             <div>
-                <a id="signUpBtn" href="../views/signup.html">Sign up</a>
-                <a id="loginBtn" href="../views/login.html">Login</a>
-                <a id="logOutBtn" href="../">Logout</a>
+                <a id="signUpBtn" href="../views/signup.html" title="Sign up to create an account">Sign up</a>
+                <a id="loginBtn" href="../views/login.html" title="Log in to your account">Login</a>
+                <a id="logOutBtn" href="../" title="Log out from your account">Logout</a>
             </div>
         </nav>
     </header>
@@ -33,8 +33,8 @@
 
         <section id="login_wrapper">
             <article id="login_images">
-                <img class="hidden_desktop" src="../images/login-ux.svg" alt="" />
-                <img hidden class="hidden_mobile" src="../images/login-mobile-ux.svg" alt="" />
+                <img class="hidden_desktop" src="../images/login-ux.svg" alt="Person with login form" />
+                <img hidden class="hidden_mobile" src="../images/login-mobile-ux.svg" alt="Person with login form" />
             </article>
             <article id="login_form_and_text_wrapper">
                 <h1>Log in 🔑</h1>
@@ -57,10 +57,17 @@
                     <button type="submit" aria-label="Log in as a user">Log In</button>
                 </form>
                 <div class="form_reminder">
-                    <p>Not a member yet? <a href="../views/signup.html">Sign up</a></p>
+                    <p>Not a member yet? <a href="../views/signup.html" title="Sign up to become a member">Sign up</a></p>
                 </div>
             </article>
         </section>
+        <dialog id="alertModal" class="modal">
+            <div class="alertModal-content">
+                <span class="close">&times;</span>
+                <p id="alertModalMessage"></p>
+            </div>
+          </dialog>
+          
 
     </main>
 

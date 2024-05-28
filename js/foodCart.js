@@ -1,64 +1,71 @@
-import { addItemToLocalStorage } from "./auth.js";
-import { addMealToUser } from "./jsonApi.js";
+import { addItemToLocalStorage,removeItemFromLocalStorage } from './auth.js';
+import { addMealToUser,removeMealFromUser } from './jsonApi.js';
 
 export const createFoodCart = async (mealList) => {
-  const meal =
+    const meal =
     mealList && mealList.meals && mealList.meals[0]
-      ? mealList.meals[0]
-      : mealList;
-  const mealId = meal.idMeal;
-  const mealName = meal.strMeal;
-  const mealArea = meal.strArea;
-  const mealCategory = meal.strCategory;
-  const mealIngredients = await getIngredients(meal);
-  const mealInstructions = meal.strInstructions;
-  const mealThumb = meal.strMealThumb;
-  const mealTags = await getTags(meal.strTags);
-  const mealYoutubeLink = meal.strYoutube;
+        ? mealList.meals[0]
+        : mealList;
+    const mealId = meal.idMeal;
+    const mealName = meal.strMeal;
+    const mealArea = meal.strArea;
+    const mealCategory = meal.strCategory;
+    const mealIngredients = await getIngredients(meal);
+    const mealInstructions = meal.strInstructions;
+    const mealThumb = meal.strMealThumb;
+    //const mealTags = await getTags(meal.strTags);
+    //const mealYoutubeLink = meal.strYoutube;
 
-  // Wrapper
-  const cartSection = document.createElement("section");
-  cartSection.classList.add("foodCart");
+    // Wrapper
+    const cartSection = document.createElement('section');
+    cartSection.classList.add('foodCart');
+    cartSection.setAttribute('data-meal-id', mealId);
   cartSection.tabIndex='0';
 
-  // Thumbnail Container
-  const thumbContainer = document.createElement("div");
-  thumbContainer.classList.add("thumbContainer");
+    // Thumbnail Container
+    const thumbContainer = document.createElement('div');
+    thumbContainer.classList.add('thumbContainer');
 
-  // Thumbnail
-  const img = document.createElement("img");
-  img.src = `${mealThumb}`;
-  img.alt = `Meal thumbnail of: ${mealName}`;
-  img.classList.add("mealThumbnail");
+    // Thumbnail
+    const img = document.createElement('img');
+    img.src = `${mealThumb}`;
+    img.alt = `Image of meal: ${mealName}`;
+    img.classList.add('mealThumbnail');
 
-  // Add Button Container
-  const addBtnContainer = document.createElement("div");
-  addBtnContainer.classList.add("addBtnFeatured");
+    // Buttons Container
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('buttonsContainer');
 
-  // Favorite button wide card
-  const addButton = document.createElement("img");
-  addButton.setAttribute("role", "button");
-  addButton.setAttribute("tabindex", "0");
-  addButton.setAttribute("aria-label", "Add to favorites button");
-  addButton.setAttribute("src", "../images/addBtn.svg");
-  addButton.classList.add("addToFavoritesWide");
-  addButton.addEventListener("click", async (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    favoriteMeal(mealId, addButton, e);
-  });
-  addButton.addEventListener("keydown", async (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.stopPropagation();
-      e.preventDefault();
-      favoriteMeal(mealId, addButton, e);
+    if (isMealInFavorites(Number(mealId))) {
+    // Remove button
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.textContent = '-';
+        removeButton.classList.add('removeFromFavoritesButton');
+        removeButton.setAttribute('aria-label', 'Remove from favorites');
+        removeButton.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            await removeFavorite(mealId, removeButton, e);
+        });
+        buttonsContainer.appendChild(removeButton);
+    } else {
+    // Add button
+        const addButton = document.createElement('button');
+        addButton.type = 'button';
+        addButton.textContent = '+';
+        addButton.classList.add('addToFavoritesButton');
+        addButton.setAttribute('aria-label', 'Add to favorites');
+        addButton.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            await favoriteMeal(mealId, addButton, e);
+        });
+        buttonsContainer.appendChild(addButton);
     }
-  });
 
-  addBtnContainer.appendChild(addButton);
-
-  thumbContainer.appendChild(img);
-  thumbContainer.appendChild(addBtnContainer);
+    thumbContainer.appendChild(img);
+ 
 
   // Title Container
   const titleContainer = document.createElement("div");
@@ -128,6 +135,7 @@ export const createFoodCart = async (mealList) => {
   return cartSection;
 };
 
+
 const shortenInstructions = async (instructions) => {
   if (instructions.length > 200) {
     return instructions.substring(0, 200) + "...";
@@ -136,28 +144,29 @@ const shortenInstructions = async (instructions) => {
   }
 };
 
+
 const getIngredients = async (meal) => {
-  const ingredients = [];
-  for (let i = 1; i <= 20; i++) {
-    const ingredient = meal[`strIngredient${i}`];
-    const measure = meal[`strMeasure${i}`];
-    if (ingredient) {
-      ingredients.push({
-        ingredient: ingredient,
-        measure: measure || "",
-      });
+    const ingredients = [];
+    for (let i = 1; i <= 20; i++) {
+        const ingredient = meal[`strIngredient${i}`];
+        const measure = meal[`strMeasure${i}`];
+        if (ingredient) {
+            ingredients.push({
+                ingredient: ingredient,
+                measure: measure || '',
+            });
+        }
     }
-  }
-  return ingredients;
+    return ingredients;
 };
 
-const getTags = async (tags) => {
-  if (!tags) {
-    return "";
-  }
-  const tagsArrays = tags.split(",");
-  return tagsArrays.map((tag) => tag.trim());
-};
+// const getTags = async (tags) => {
+//     if (!tags) {
+//         return '';
+//     }
+//     const tagsArrays = tags.split(',');
+//     return tagsArrays.map((tag) => tag.trim());
+// };
 
 const favoriteMeal = async (mealId, addButton, e) => {
   e.stopPropagation();
@@ -172,6 +181,7 @@ const favoriteMeal = async (mealId, addButton, e) => {
     await addItemToLocalStorage(mealId, "favoritesIdList");
   }
 };
+
 
 // TODO Add the rest of the data to the modal content
 const openModal = (mealName, instructions, ingredients, mealThumb) => {

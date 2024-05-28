@@ -28,3 +28,26 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+#alertModal.modal {
+  display:none;
+  z-index: 100;
+}
+ 
+#alertModal .alertModal-content {
+  background-color: var(--color-primary);
+  padding: 1rem;
+
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius-card);
+}
+
+
+#alertModal .alertModal-content .close {
+  position: absolute;
+  top: 0.3rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+

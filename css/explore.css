@@ -262,11 +262,8 @@ dialog#categories .close {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Specifik styling of card 3 and 8 */
-  #mealsContainer
-    .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) {
+  #mealsContainer .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) {
     grid-column: span 2;
-
     display: grid;
     grid-template-areas:
       "thumbnail info info info"
@@ -278,16 +275,11 @@ dialog#categories .close {
     gap: var(--spacing-4);
   }
 
-  #mealsContainer
-    .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33))
-    .thumbContainer {
+  #mealsContainer .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) .thumbContainer {
     grid-area: thumbnail;
   }
 
-  #mealsContainer
-    .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33))
-    .thumbContainer
-    .mealThumbnail {
+  #mealsContainer .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) .thumbContainer .mealThumbnail {
     border-top-right-radius: 0;
     border-bottom-left-radius: var(--border-radius-card);
     width: 100%;
@@ -295,9 +287,7 @@ dialog#categories .close {
     object-fit: cover;
   }
 
-  #mealsContainer
-    .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33))
-    .infoContainer {
+  #mealsContainer .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) .infoContainer {
     grid-area: info;
     display: flex;
     flex-direction: column;
@@ -305,9 +295,7 @@ dialog#categories .close {
     padding: 1rem;
   }
 
-  #mealsContainer
-    .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33))
-    .addToFavoritesButton {
+  #mealsContainer .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) .buttonsContainer .addToFavoritesButton {
     grid-area: button;
     align-self: center;
     width: 100%;
@@ -321,12 +309,28 @@ dialog#categories .close {
     margin-bottom: 2rem;
   }
 
-  #mealsContainer
-    .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33))
-    .addToFavoritesButton::after {
+  #mealsContainer .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) .buttonsContainer .addToFavoritesButton::after {
     content: " Add to favorites";
     color: var(--color-secondary);
-    background-color: none;
+  }
+
+  #mealsContainer .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) .buttonsContainer .removeFromFavoritesButton {
+    grid-area: button;
+    align-self: center;
+    width: 100%;
+    background-color: var(--color-warning);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-md);
+    border: none;
+    border-radius: var(--border-radius-input);
+    cursor: pointer;
+    position: static;
+    margin-bottom: 2rem;
+  }
+
+  #mealsContainer .foodCart:nth-child(5n + 3):not(:nth-child(13)):not(:nth-child(33)) .buttonsContainer .removeFromFavoritesButton::after {
+    content: " Remove from favorites";
+    color: var(--color-primary);
   }
 }
 
@@ -343,7 +347,6 @@ dialog#categories .close {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* styling for foodcard 5 og 6 */
   #mealsContainer .foodCart:nth-child(6n + 2):not(:nth-child(26)) {
     grid-column: span 2;
     grid-template-columns: subgrid;
