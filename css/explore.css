@@ -218,7 +218,7 @@ dialog#categories .close {
   justify-items: center;
 }
 
-.button {
+.addToFavorites {
   background-color: var(--color-food-category-box);
   height: var(--spacing-4);
   width: 100%;
@@ -236,19 +236,54 @@ dialog#categories .close {
   transition: all var(--transition-duration-150) var(--transition-ease-in-out);
 }
 
-.button:hover {
+.addToFavorites:hover {
   background-color: var(--color-button-favorites);
   color: var(--color-primary);
   transform: var(--transform-btn);
   box-shadow: var(--box-shadow);
 }
 
-.button:focus {
+.addToFavorites:focus {
   background-color: var(--color-button-favorites);
   color: var(--color-primary);
   transform: var(--transform-btn);
   box-shadow: var(--box-shadow); 
 }
+
+.removeFromFavorites {
+  display: flex;
+  background-color: var(--color-warning);
+  height: var(--spacing-4);
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-base);
+  font-weight: var(--font-weight-thick);
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.5em 1.25em 0.7em;
+  border-radius: 0.25em;
+  color: var(--color-warning-dark);
+  transition: all var(--transition-duration-150) var(--transition-ease-in-out);
+}
+
+.removeFromFavorites:hover {
+  background-color: var(--color-warning-dark);
+  color: var(--color-primary);
+  transform: var(--transform-btn);
+  box-shadow: var(--box-shadow);
+}
+
+.removeFromFavorites:focus {
+  background-color: var(--color-warning-dark);
+  color: var(--color-primary);
+  transform: var(--transform-btn);
+  box-shadow: var(--box-shadow);
+}
+
+
+
 
 #mealsContainer .foodCart:nth-child(5n) {
   @container (min-width: 700px) {
@@ -316,6 +351,7 @@ dialog#categories .close {
     .removeFromFavoritesWide:hover {
       transform: scale(1.1);
     }
+
 
     @container (min-width: 1000px) {
       grid-column: span 2;
