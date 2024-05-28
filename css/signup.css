@@ -89,6 +89,10 @@ form {
     transform: var(--transform-btn);
     box-shadow: var(--box-shadow);
   }
+  button:focus {
+    transform: var(--transform-btn);
+    box-shadow: var(--box-shadow);
+  }
 }
 
 #form_reminder {
