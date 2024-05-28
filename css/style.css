@@ -28,16 +28,15 @@ img {
   max-width: 100%;
   height: auto;
 }
-
-#alertModal.modal {
-  display:none;
-  z-index: 100;
-}
  
-#alertModal .alertModal-content {
-  background-color: var(--color-primary);
-  padding: 1rem;
-
+#alertModal {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: calc(50% - 150px);
+  z-index: 100;
+  width: var(-alert-modal-width);
+  padding: var(--spacing-4);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius-card);
 }

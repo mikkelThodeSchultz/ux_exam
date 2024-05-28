@@ -83,4 +83,7 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+
+  --alert-modal-width: 300px;
+  
 }
