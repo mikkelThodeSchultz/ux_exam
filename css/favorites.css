@@ -57,7 +57,7 @@ h1 {
   object-fit: cover;
 }
 
-.foodCart__description {
+.foodCart_description {
   display: none;
   line-height: var(--line-height-base);
   max-width: 50ch;

@@ -43,7 +43,12 @@
     flex-direction: column;
     gap: 1rem;
     padding: var(--spacing-10);
+
   }
+#modalInstructions{
+  white-space: pre-wrap
+}
+
 }
 
 .close {

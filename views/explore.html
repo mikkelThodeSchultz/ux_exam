@@ -31,33 +31,36 @@
     <main>
 
         <h1 class="center">Browse Recipies</h1>
-        <section class="searchAndFilter">
+        
             <form id="searchForMeal">
                 <input id="searchInput" type="text" placeholder="Search &#x1F50E;&#xFE0E;">
-                <!-- <button type="submit">Search</button> -->
-            </form>
+             
+         
             <button id="showCategories">Categories <img src="../images/cat-icon-ux.svg" alt="Filter on category icon"></button>
-        </section>
+          
 
         <dialog id="categories">
             <span class="close">&times;</span>
             <ol></ol>
         </dialog>
+      </form>
 
+        <div class="wrapper">
         <section id="mealsContainer">
 
         </section>
-
-    <dialog id="modal" class="modal">
-      <div class="modal-content">
-        <span class="close" tabindex="0">&times;</span>
-        <img class="modalImage" src="" alt="" />
-
-        <h2 id="modalMealName"></h2>
-        <p id="modalIngredience"></p>
-        <p id="modalInstructions"></p>
       </div>
-    </dialog>
+        <dialog id="modal" class="modal">
+          <div class="modal-content">
+          <span class="close" tabindex="0">&times;</span>
+          <img class="modalImage" src="" alt="Meal thumbnail">
+          <h2 id="modalMealName"></h2>
+          <p id="modalIngredients"></p>
+          <p id="modalInstructions"></p>
+          <div id="modalButtonsContainer"></div>
+        </div>
+      </dialog>
+      
   </main>
 
 
