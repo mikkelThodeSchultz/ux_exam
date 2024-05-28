@@ -140,6 +140,11 @@ export const createFoodCart = async (mealList) => {
             await favoriteMeal(mealId, footerButton, e);
         });
     
+    footerButton.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        favoriteMeal(mealId, footerButton, e);      }
+  })
+
         buttonWrapper.appendChild(footerButton);
     }
     
@@ -147,6 +152,12 @@ export const createFoodCart = async (mealList) => {
     cartSection.addEventListener('click', () =>
         openModal(mealId, mealName, mealInstructions, mealIngredients, mealThumb)
     );
+
+    cartSection.addEventListener("keydown", (e) => {
+      if (e.key === 'Enter') {
+        openModal(mealId, mealName, mealInstructions, mealIngredients, mealThumb)
+      }
+    });
 
     cartSection.appendChild(thumbContainer);
     cartSection.appendChild(titleContainer);
@@ -196,8 +207,15 @@ const favoriteMeal = async (mealId, addButton, e) => {
 const openModal = (mealId, mealName, instructions, ingredients, mealThumb) => {
     const modal = document.getElementById('modal');
     const closeBtn = document.querySelector('dialog#modal span.close');
+
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
+    });
+
+    closeBtn.addEventListener("keydown", (e) => {
+      if (e.key === 'Enter') {
+        modal.style.display = "none";
+      }
     });
 
     modal.addEventListener('keydown', (e) => {
@@ -254,6 +272,8 @@ const openModal = (mealId, mealName, instructions, ingredients, mealThumb) => {
     }
 
     modal.style.display = 'flex';
+    modal.focus()
+    trapFocusInModal(modal)
     
 };
 

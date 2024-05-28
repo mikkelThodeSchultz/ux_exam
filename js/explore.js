@@ -110,7 +110,6 @@ export const handleExplore = () => {
     };
 
   const setUpExplore = async () => {
-    //Return statement to avoid overusing the API
     const mealsContainer = document.getElementById("mealsContainer");
     mealsContainer.innerHTML = "";
     for (let index = 0; index < 8; index++) {

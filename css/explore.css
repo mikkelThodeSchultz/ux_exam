@@ -2,7 +2,7 @@
 @import url("../css/dialog_card.css");
 
 main {
-  padding: var(--spacing-10);
+  padding: var(--spacing-16);
 }
 
 input {
@@ -48,6 +48,13 @@ input {
 }
 
 #showCategories:hover {
+  transform: var(--transform-btn);
+  box-shadow: var(--box-shadow);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+#showCategories:focus {
   transform: var(--transform-btn);
   box-shadow: var(--box-shadow);
   background-color: var(--color-secondary);
@@ -236,6 +243,13 @@ dialog#categories .close {
   box-shadow: var(--box-shadow);
 }
 
+.button:focus {
+  background-color: var(--color-button-favorites);
+  color: var(--color-primary);
+  transform: var(--transform-btn);
+  box-shadow: var(--box-shadow); 
+}
+
 #mealsContainer .foodCart:nth-child(5n) {
   @container (min-width: 700px) {
     grid-column: span 2;
@@ -284,6 +298,10 @@ dialog#categories .close {
     }
 
     .addToFavoritesWide:hover {
+      transform: scale(1.1);
+    }
+
+    .addToFavoritesWide:focus {
       transform: scale(1.1);
     }
 

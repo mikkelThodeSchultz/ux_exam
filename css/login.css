@@ -99,6 +99,11 @@ form {
     box-shadow: var(--box-shadow);
   }
 
+  button:focus {
+    transform: var(--transform-btn);
+    box-shadow: var(--box-shadow);
+  }
+
   #loginForm {
     display: flex;
     flex-direction: column;
