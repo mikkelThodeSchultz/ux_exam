@@ -135,6 +135,11 @@ dialog#categories .close {
 
 .foodCart .infoContainer .instructions {
   font-size: 0.6rem;
+  overflow: hidden;
+  line-height: 1.2em; 
+  -webkit-line-clamp: 4; 
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 
 .foodCart .thumbContainer {
@@ -375,6 +380,8 @@ dialog#categories .close {
     grid-gap: var(--spacing-4);
     grid-template-columns: repeat(5, 1fr);
   }
+
+
 }
 
 @media (min-width: 1732px) {

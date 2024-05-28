@@ -74,9 +74,7 @@ export const createFoodCart = async (mealList) => {
   // Instructions
   const instructionsParagraph = document.createElement("p");
   instructionsParagraph.classList.add("instructions");
-  instructionsParagraph.textContent = await shortenInstructions(
-    mealInstructions
-  );
+  instructionsParagraph.textContent = mealInstructions
 
   infoContainer.appendChild(categoryAreaArticle);
   infoContainer.appendChild(mealNameHeading);
