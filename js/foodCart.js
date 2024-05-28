@@ -116,7 +116,7 @@ export const createFoodCart = async (mealList) => {
   );
   cartSection.addEventListener("keydown", (e) => {
     if (e.key === 'Enter') {
-        openModal(mealName, mealInstructions, mealIngredients);
+        openModal(mealName, mealInstructions, mealIngredients, mealThumb);
     }
   });
 
@@ -174,7 +174,7 @@ const favoriteMeal = async (mealId, addButton, e) => {
 };
 
 // TODO Add the rest of the data to the modal content
-const openModal = (mealName, instructions, ingredients) => {
+const openModal = (mealName, instructions, ingredients, mealThumb) => {
   const modal = document.querySelector("dialog#modal");
 
   const closeBtn = modal.querySelector("span.close");
@@ -220,7 +220,7 @@ const openModal = (mealName, instructions, ingredients) => {
 
   modalInstructions.textContent = instructions;
   
-  modal.style.display = "block";
+  modal.style.display = "flex";
   modal.focus()
   trapFocusInModal(modal)
 };
