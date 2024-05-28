@@ -28,6 +28,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+p{
+  max-width: 50ch;
+}
 
 #alertModal.modal {
   display:none;

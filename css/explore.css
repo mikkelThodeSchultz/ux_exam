@@ -287,6 +287,18 @@ dialog#categories .close {
       transform: scale(1.1);
     }
 
+    .removeFromFavoritesWide {
+      height: 40px;
+      width: 45px;
+      border-radius: 0 0 0 var(--border-radius-card);
+      transition: all var(--transition-duration-150)
+        var(--transition-ease-in-out);
+    }
+
+    .removeFromFavoritesWide:hover {
+      transform: scale(1.1);
+    }
+
     @container (min-width: 1000px) {
       grid-column: span 2;
 

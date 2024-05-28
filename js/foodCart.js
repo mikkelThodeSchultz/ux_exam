@@ -37,7 +37,7 @@ export const createFoodCart = async (mealList) => {
         removeButton.setAttribute('role', 'button');
         removeButton.setAttribute('tabindex', '0');
         removeButton.setAttribute('aria-label', 'Remove from favorites button');
-        removeButton.setAttribute('src', ' '); // tilføj billede
+        removeButton.setAttribute('src', '../images/minusBtn.svg');
         removeButton.classList.add('removeFromFavoritesWide');
         removeButton.addEventListener('click', async (e) => {
             e.stopPropagation();
@@ -73,6 +73,7 @@ export const createFoodCart = async (mealList) => {
             }
         });
         addBtnContainer.appendChild(addButton);
+  
     }
 
     thumbContainer.appendChild(img);
@@ -110,22 +111,38 @@ export const createFoodCart = async (mealList) => {
     instructionsParagraph.classList.add('foodCart_description');
     instructionsParagraph.textContent = await shortenInstructions(mealInstructions);
 
-    // Button Wrapper
+
     const buttonWrapper = document.createElement('div');
     buttonWrapper.classList.add('button_wrapper');
-
-    // Favorite button (Duplicate for the footer)
-    const footerButton = document.createElement('button');
-    footerButton.type = 'button';
-    footerButton.textContent = 'Add to favorites';
-    footerButton.classList.add('addToFavorites', 'button');
-    footerButton.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        await favoriteMeal(mealId, footerButton, e);
-    });
-
-    buttonWrapper.appendChild(footerButton);
+    
+    if (isMealInFavorites(Number(mealId))) {
+        // Remove button
+        const removeFooterButton = document.createElement('button');
+        removeFooterButton.type = 'button';
+        removeFooterButton.textContent = 'Remove from favorites';
+        removeFooterButton.classList.add('removeFromFavorites', 'button');
+        removeFooterButton.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            await removeFavorite(mealId, removeFooterButton, e);
+        });
+    
+        buttonWrapper.appendChild(removeFooterButton);
+    } else {
+        // Favorite button (Duplicate for the footer)
+        const footerButton = document.createElement('button');
+        footerButton.type = 'button';
+        footerButton.textContent = 'Add to favorites';
+        footerButton.classList.add('addToFavorites', 'button');
+        footerButton.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            await favoriteMeal(mealId, footerButton, e);
+        });
+    
+        buttonWrapper.appendChild(footerButton);
+    }
+    
 
     cartSection.addEventListener('click', () =>
         openModal(mealId, mealName, mealInstructions, mealIngredients, mealThumb)
@@ -211,46 +228,29 @@ const openModal = (mealId, mealName, instructions, ingredients, mealThumb) => {
 
     if (isMealInFavorites(Number(mealId))) {
         // Remove button
-        const removeButton = document.createElement('img');
-        removeButton.setAttribute('role', 'button');
-        removeButton.setAttribute('tabindex', '0');
-        removeButton.setAttribute('aria-label', 'Remove from favorites button');
-        removeButton.setAttribute('src', ' '); // tilføj billede
-        removeButton.classList.add('removeFromFavoritesWide');
-        removeButton.addEventListener('click', async (e) => {
+        const removeFooterButton = document.createElement('button');
+        removeFooterButton.type = 'button';
+        removeFooterButton.textContent = 'Remove from favorites';
+        removeFooterButton.classList.add('removeFromFavorites', 'button');
+        removeFooterButton.addEventListener('click', async (e) => {
             e.stopPropagation();
             e.preventDefault();
-            await removeFavorite(mealId, removeButton, e);
+            await removeFavorite(mealId, removeFooterButton, e);
         });
-        removeButton.addEventListener('keydown', async (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.stopPropagation();
-                e.preventDefault();
-                await removeFavorite(mealId, removeButton, e);
-            }
-        });
-        modalButtonsContainer.appendChild(removeButton);
+        modalButtonsContainer.appendChild(removeFooterButton);
     } else {
         // Add button
-        const addButton = document.createElement('img');
-        addButton.setAttribute('role', 'button');
-        addButton.setAttribute('tabindex', '0');
-        addButton.setAttribute('aria-label', 'Add to favorites button');
-        addButton.setAttribute('src', '../images/addBtn.svg');
-        addButton.classList.add('addToFavoritesWide');
-        addButton.addEventListener('click', async (e) => {
+        const footerButton = document.createElement('button');
+        footerButton.type = 'button';
+        footerButton.textContent = 'Add to favorites';
+        footerButton.classList.add('addToFavorites', 'button');
+        footerButton.addEventListener('click', async (e) => {
             e.stopPropagation();
             e.preventDefault();
-            await favoriteMeal(mealId, addButton, e);
+            await favoriteMeal(mealId, footerButton, e);
         });
-        addButton.addEventListener('keydown', async (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.stopPropagation();
-                e.preventDefault();
-                await favoriteMeal(mealId, addButton, e);
-            }
-        });
-        modalButtonsContainer.appendChild(addButton);
+    
+        modalButtonsContainer.appendChild(footerButton);
     }
 
     modal.style.display = 'flex';

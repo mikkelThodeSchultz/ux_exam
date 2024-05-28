@@ -9,12 +9,13 @@
   overflow: hidden;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Background overlay */
+  background-color: var(--color-blur-backgrund); /* Background overlay */
 }
 
 /* Modal content */
 .modal-content {
-  background-color: #fff;
+  max-width: 50ch;
+  background-color: var(--color-primary);
   padding: 20px;
   border-radius: 8px;
   width: 70%;
@@ -38,17 +39,22 @@
     text-align: center;
   }
 
-  #modalIngredience {
+#modalIngredients {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: var(--spacing-10);
 
+
   }
 #modalInstructions{
-  white-space: pre-wrap
+  white-space: pre-wrap;
+  padding-bottom:var(--spacing-4) ;
 }
 
+#modalButtonsContainer{
+  display: flex;
+}
 }
 
 .close {
