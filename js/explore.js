@@ -1,11 +1,5 @@
-import {
-  randomMeal,
-  searchMealByName,
-  listAllCategories,
-  filterByCategory,
-  searchMealById,
-} from "./mealApi.js";
-import { createFoodCart } from "./foodCart.js";
+import { randomMeal, searchMealByName, listAllCategories, filterByCategory, searchMealById } from './mealApi.js';
+import { createFoodCart, trapFocusInModal } from './foodCart.js';
 
 export const handleExplore = () => {
   const searchForMealForm = document.getElementById("searchForMeal");
@@ -49,10 +43,16 @@ export const handleExplore = () => {
       setCategories(response.categories);
     });
 
-    categoriesCloseButton.addEventListener("click", () => {
-      categoriesList.classList.remove("open");
-    });
-  }
+        categoriesCloseButton.addEventListener('click', () => {
+            categoriesList.classList.remove('open');
+        });
+
+        categoriesCloseButton.addEventListener("keydown", (e) => {
+            if (e.key === 'Enter') {
+                categoriesList.classList.remove('open');
+            }
+          });
+    }
 
   const setSearchedMeals = async (meals) => {
     const mealsContainer = document.getElementById("mealsContainer");
@@ -84,16 +84,30 @@ export const handleExplore = () => {
     categoriesList.classList.remove("open");
   };
 
-  const setCategories = (categories) => {
-    const ol = document.querySelector("#categories ol");
-    ol.innerHTML = "";
-    for (const category of categories) {
-      const categoryItem = document.createElement("li");
-      categoryItem.innerText = category.strCategory;
-      categoryItem.addEventListener("click", handleCategorySelected);
-      ol.appendChild(categoryItem);
-    }
-  };
+    const setCategories = (categories) => {
+        const ol = document.querySelector('#categories ol');
+        ol.innerHTML = '';
+        for (const category of categories) {
+            const categoryItem = document.createElement('li');
+            categoryItem.innerText = category.strCategory;
+            categoryItem.tabIndex = "0"
+            categoryItem.addEventListener('click', handleCategorySelected);
+            categoryItem.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    handleCategorySelected(e)
+                }
+            })
+            ol.appendChild(categoryItem);
+        }
+        categoriesList.focus()  
+        categoriesList.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                categoriesList.classList.remove('open');
+            }
+          })
+        trapFocusInModal(categoriesList)
+
+    };
 
   const setUpExplore = async () => {
     //Return statement to avoid overusing the API
