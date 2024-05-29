@@ -10,7 +10,7 @@ export const getUserByEmail = async (userEmail) => {
         if (userData.length === 0) {
             throw new Error('User not found');
         }
-        const user = userData[0]; 
+        const user = userData[0];
         return user;
     } catch (error) {
         console.error('Error:', error);
@@ -27,7 +27,7 @@ export const addMealToUser = async (userEmail, mealId) => {
         if (userData.length === 0) {
             throw new Error('User not found');
         }
-        const user = userData[0]; 
+        const user = userData[0];
         const mealIdInt = parseInt(mealId);
 
         if (user.favourites_id.includes(mealIdInt)) {
@@ -64,7 +64,7 @@ export const removeMealFromUser = async (userEmail, mealId) => {
         if (userData.length === 0) {
             throw new Error('User not found');
         }
-        const user = userData[0]; 
+        const user = userData[0];
         const mealIdInt = parseInt(mealId);
 
         if (!user.favourites_id.includes(mealIdInt)) {

@@ -34,6 +34,7 @@ main {
     text-align: center;
     text-wrap: balance;
   }
+
   p {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-base);
@@ -67,10 +68,12 @@ main {
 @media (max-width: 780px) {
   #home_wrapper #home_text {
     padding: 0 var(--spacing-2) 0 var(--spacing-2);
+
     h1 {
       font-size: var(--font-size-mobile-4xl);
       line-height: var(--line-height-hero-mobile);
     }
+
     a {
       font-size: var(--font-size-mobile-md);
       padding: var(--spacing-2) var(--spacing-6);
@@ -82,12 +85,14 @@ main {
   main {
     align-items: start;
   }
+
   #home_wrapper {
     flex-direction: column;
 
     #home_text {
       max-width: 570px;
     }
+
     #home_text p {
       max-width: 500px;
     }
@@ -131,10 +136,12 @@ main nav {
 }
 
 @keyframes wave {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -144,24 +151,31 @@ main nav {
 .wave:nth-child(1) {
   animation-delay: 0s;
 }
+
 .wave:nth-child(2) {
   animation-delay: 0.1s;
 }
+
 .wave:nth-child(3) {
   animation-delay: 0.2s;
 }
+
 .wave:nth-child(4) {
   animation-delay: 0.3s;
 }
+
 .wave:nth-child(5) {
   animation-delay: 0.4s;
 }
+
 .wave:nth-child(6) {
   animation-delay: 0.5s;
 }
+
 .wave:nth-child(7) {
   animation-delay: 0.6s;
 }
+
 .wave:nth-child(8) {
   animation-delay: 0.7s;
 }

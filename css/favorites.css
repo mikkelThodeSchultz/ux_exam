@@ -43,15 +43,15 @@ h1 {
   box-shadow: var(--box-shadow);
 }
 
-.foodCart > :not(.thumbContainer) {
+.foodCart> :not(.thumbContainer) {
   margin-inline: var(--_padding);
 }
 
-.foodCart > :last-child:not(.thumbContainer) {
+.foodCart> :last-child:not(.thumbContainer) {
   margin-block-end: var(--_padding);
 }
 
-.foodCart > .thumbContainer img {
+.foodCart>.thumbContainer img {
   width: 100%;
   height: 200px;
   object-fit: cover;

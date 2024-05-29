@@ -28,7 +28,8 @@ img {
   max-width: 100%;
   height: auto;
 }
- p{
+
+p {
   max-width: 50ch;
 }
 
@@ -38,7 +39,7 @@ img {
   top: 10px;
   left: calc(50% - 150px);
   z-index: 100;
-  width: var(-alert-modal-width);
+  width: var(--alert-modal-width);
   padding: var(--spacing-4);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius-card);
@@ -52,4 +53,3 @@ img {
   font-size: 2rem;
   cursor: pointer;
 }
-

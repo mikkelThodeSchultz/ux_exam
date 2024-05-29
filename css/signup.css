@@ -67,6 +67,7 @@ form {
   label {
     font-size: var(--font-size-desktop-base);
   }
+
   input {
     padding: var(--spacing-2);
     border: var(--border-input);
@@ -85,10 +86,12 @@ form {
     transition: all var(--transition-duration-150) var(--transition-ease-in-out);
     cursor: pointer;
   }
+
   button:hover {
     transform: var(--transform-btn);
     box-shadow: var(--box-shadow);
   }
+
   button:focus {
     transform: var(--transform-btn);
     box-shadow: var(--box-shadow);
@@ -110,6 +113,7 @@ form {
   #signup_wrapper {
     flex-direction: column-reverse;
   }
+
   #signup_wrapper .hidden_desktop {
     display: none;
   }

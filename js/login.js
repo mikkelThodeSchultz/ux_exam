@@ -2,8 +2,8 @@ import { logIn, logout, signUp, showAlert } from './auth.js';
 
 export const handleLoginAndSignup = () => {
 
-   
-    
+
+
     const setupSignupForm = document.getElementById('signUpForm');
     if (setupSignupForm) {
         setupSignupForm.addEventListener('submit', async (e) => {

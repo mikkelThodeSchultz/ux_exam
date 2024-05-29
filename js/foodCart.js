@@ -73,7 +73,7 @@ export const createFoodCart = async (mealList) => {
             }
         });
         addBtnContainer.appendChild(addButton);
-  
+
     }
 
     thumbContainer.appendChild(img);
@@ -114,7 +114,7 @@ export const createFoodCart = async (mealList) => {
 
     const buttonWrapper = document.createElement('div');
     buttonWrapper.classList.add('button_wrapper');
-    
+
     if (isMealInFavorites(Number(mealId))) {
         // Remove button
         const removeFooterButton = document.createElement('button');
@@ -126,7 +126,7 @@ export const createFoodCart = async (mealList) => {
             e.preventDefault();
             await removeFavorite(mealId, removeFooterButton, e);
         });
-    
+
         buttonWrapper.appendChild(removeFooterButton);
     } else {
         // Favorite button (Duplicate for the footer)
@@ -139,16 +139,16 @@ export const createFoodCart = async (mealList) => {
             e.preventDefault();
             await favoriteMeal(mealId, footerButton, e);
         });
-    
+
         footerButton.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
-                favoriteMeal(mealId, footerButton, e);      
+                favoriteMeal(mealId, footerButton, e);
             }
         });
 
         buttonWrapper.appendChild(footerButton);
     }
-    
+
 
     cartSection.addEventListener('click', () =>
         openModal(mealId, mealName, mealInstructions, mealIngredients, mealThumb)
@@ -268,14 +268,14 @@ const openModal = (mealId, mealName, instructions, ingredients, mealThumb) => {
             e.preventDefault();
             await favoriteMeal(mealId, footerButton, e);
         });
-    
+
         modalButtonsContainer.appendChild(footerButton);
     }
 
     modal.style.display = 'flex';
     modal.focus();
     trapFocusInModal(modal);
-    
+
 };
 
 const isMealInFavorites = (mealId) => {
@@ -300,7 +300,7 @@ const removeFavorite = async (mealId, removeButton, e) => {
 };
 
 export const trapFocusInModal = (modal) => {
-    const focusableElements = modal.querySelectorAll('li, span[tabindex="0"]');  
+    const focusableElements = modal.querySelectorAll('li, span[tabindex="0"]');
     const firstFocusableElement = focusableElements[0];
     const lastFocusableElement = focusableElements[focusableElements.length - 1];
 

@@ -2,7 +2,7 @@
 const URL = 'https://www.themealdb.com/api/json/v1/1/';
 
 export const searchMealByName = async (mealName) => {
-    if(!mealName){
+    if (!mealName) {
         return;
     }
     try {
@@ -23,7 +23,7 @@ export const randomMeal = async () => {
 };
 
 export const searchMealById = async (mealId) => {
-    if(!mealId){
+    if (!mealId) {
         return;
     }
     try {
@@ -43,8 +43,8 @@ export const listAllCategories = async () => {
     }
 };
 
-export const filterByCategory =  async (category) => {
-    if (!category){
+export const filterByCategory = async (category) => {
+    if (!category) {
         return;
     }
     try {

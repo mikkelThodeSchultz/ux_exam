@@ -13,54 +13,55 @@
 <body>
 
 
-    <header>
-        <nav>
-            <div>
-                <a href="../" title="Return to home page"><img src="../images/logo-ux.svg" alt="Logo"></a>
-                <a href="../views/explore.html" title="Explore various recipes">Explore</a>
-                <a href="../views/favorites.html" title="View your favorite recipes">Favorites</a>
-            </div>
-            <div>
-                <a id="signUpBtn" href="../views/signup.html" title="Sign up to create an account">Sign up</a>
-                <a id="loginBtn" href="../views/login.html" title="Log in to your account">Login</a>
-                <a id="logOutBtn" href="../" title="Log out from your account">Logout</a>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-
-        <h1 class="center exploreHeader">Browse Recipies</h1>
-        
-            <form id="searchForMeal">
-                <input id="searchInput" type="text" placeholder="Search &#x1F50E;&#xFE0E;">
-             
-         
-            <button id="showCategories">Categories <img src="../images/cat-icon-ux.svg" alt="Filter on category icon"></button>
-          
-
-        <dialog id="categories">
-            <span class="close" tabindex="0">&times;</span>
-            <ol></ol>
-        </dialog>
-      </form>
-
-        <div class="wrapper">
-        <section id="mealsContainer">
-
-        </section>
+  <header>
+    <nav>
+      <div>
+        <a href="../" title="Return to home page"><img src="../images/logo-ux.svg" alt="Logo"></a>
+        <a href="../views/explore.html" title="Explore various recipes">Explore</a>
+        <a href="../views/favorites.html" title="View your favorite recipes">Favorites</a>
       </div>
-        <dialog id="modal" class="modal">
-          <div class="modal-content">
-          <span class="close" tabindex="0">&times;</span>
-          <img class="modalImage" src="" alt="Meal thumbnail">
-          <h2 id="modalMealName"></h2>
-          <p id="modalIngredients"></p>
-          <p id="modalInstructions"></p>
-          <div id="modalButtonsContainer"></div>
-        </div>
+      <div>
+        <a id="signUpBtn" href="../views/signup.html" title="Sign up to create an account">Sign up</a>
+        <a id="loginBtn" href="../views/login.html" title="Log in to your account">Login</a>
+        <a id="logOutBtn" href="../" title="Log out from your account">Logout</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <h1 class="center exploreHeader">Browse Recipies</h1>
+
+    <form id="searchForMeal">
+      <input id="searchInput" type="text" placeholder="Search &#x1F50E;&#xFE0E;">
+
+
+      <button id="showCategories">Categories <img src="../images/cat-icon-ux.svg"
+          alt="Filter on category icon"></button>
+
+
+      <dialog id="categories">
+        <span class="close" tabindex="0">&times;</span>
+        <ol></ol>
       </dialog>
-      
+    </form>
+
+    <div class="wrapper">
+      <section id="mealsContainer">
+
+      </section>
+    </div>
+    <dialog id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close" tabindex="0">&times;</span>
+        <img class="modalImage" src="" alt="Meal thumbnail">
+        <h2 id="modalMealName"></h2>
+        <p id="modalIngredients"></p>
+        <p id="modalInstructions"></p>
+        <div id="modalButtonsContainer"></div>
+      </div>
+    </dialog>
+
   </main>
 
 

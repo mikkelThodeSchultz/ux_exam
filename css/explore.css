@@ -11,7 +11,8 @@ input {
   border: none;
   outline: none;
   box-sizing: border-box;
-  font: inherit; /* Inherit font properties from parent */
+  font: inherit;
+  /* Inherit font properties from parent */
 }
 
 #searchForMeal {
@@ -29,6 +30,7 @@ input {
   outline: 2px solid var(--color-category-hover);
   position: relative;
 }
+
 #searchForMeal input {
   width: 100%;
 }
@@ -156,15 +158,15 @@ dialog#categories .close {
   box-shadow: var(--box-shadow);
 }
 
-.foodCart > :not(.thumbContainer) {
+.foodCart> :not(.thumbContainer) {
   margin-inline: var(--_padding);
 }
 
-.foodCart > :last-child:not(.thumbContainer) {
+.foodCart> :last-child:not(.thumbContainer) {
   margin-block-end: var(--_padding);
 }
 
-.foodCart > .thumbContainer img {
+.foodCart>.thumbContainer img {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -218,39 +220,7 @@ dialog#categories .close {
   justify-items: center;
 }
 
-.addToFavorites {
-  background-color: var(--color-food-category-box);
-  height: var(--spacing-4);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-base);
-  font-weight: var(--font-weight-thick);
-  line-height: 1;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 0.5em 1.25em 0.7em;
-  border-radius: 0.25em;
-  color: var(--color-button-favorites);
-  transition: all var(--transition-duration-150) var(--transition-ease-in-out);
-}
-
-.addToFavorites:hover {
-  background-color: var(--color-button-favorites);
-  color: var(--color-primary);
-  transform: var(--transform-btn);
-  box-shadow: var(--box-shadow);
-}
-
-.addToFavorites:focus {
-  background-color: var(--color-button-favorites);
-  color: var(--color-primary);
-  transform: var(--transform-btn);
-  box-shadow: var(--box-shadow); 
-}
-
-.removeFromFavorites {
+.button {
   display: flex;
   background-color: var(--color-warning);
   height: var(--spacing-4);
@@ -268,18 +238,50 @@ dialog#categories .close {
   transition: all var(--transition-duration-150) var(--transition-ease-in-out);
 }
 
-.removeFromFavorites:hover {
+.button:hover {
   background-color: var(--color-warning-dark);
   color: var(--color-primary);
   transform: var(--transform-btn);
   box-shadow: var(--box-shadow);
 }
 
-.removeFromFavorites:focus {
+.button:focus {
   background-color: var(--color-warning-dark);
   color: var(--color-primary);
   transform: var(--transform-btn);
   box-shadow: var(--box-shadow);
+}
+
+.addToFavorites {
+  background-color: var(--color-food-category-box);
+  color: var(--color-button-favorites);
+}
+
+.addToFavorites:hover {
+  background-color: var(--color-button-favorites);
+  color: var(--color-primary);
+
+}
+
+.addToFavorites:focus {
+  background-color: var(--color-button-favorites);
+  color: var(--color-primary);
+
+}
+
+.removeFromFavorites {
+  background-color: var(--color-warning);
+  color: var(--color-warning-dark);
+}
+
+.removeFromFavorites:hover {
+  background-color: var(--color-warning-dark);
+  color: var(--color-primary);
+}
+
+.removeFromFavorites:focus {
+  background-color: var(--color-warning-dark);
+  color: var(--color-primary);
 }
 
 
@@ -290,11 +292,11 @@ dialog#categories .close {
     grid-column: span 2;
     grid-template-columns: subgrid;
 
-    > .thumbContainer {
+    >.thumbContainer {
       grid-column: 1 / -1;
     }
 
-    > .foodCart__title {
+    >.foodCart__title {
       font-size: 2rem;
       grid-column: 1 / -1;
     }
@@ -328,8 +330,7 @@ dialog#categories .close {
       height: 40px;
       width: 45px;
       border-radius: 0 0 0 var(--border-radius-card);
-      transition: all var(--transition-duration-150)
-        var(--transition-ease-in-out);
+      transition: all var(--transition-duration-150) var(--transition-ease-in-out);
     }
 
     .addToFavoritesWide:hover {
@@ -344,8 +345,7 @@ dialog#categories .close {
       height: 40px;
       width: 45px;
       border-radius: 0 0 0 var(--border-radius-card);
-      transition: all var(--transition-duration-150)
-        var(--transition-ease-in-out);
+      transition: all var(--transition-duration-150) var(--transition-ease-in-out);
     }
 
     .removeFromFavoritesWide:hover {

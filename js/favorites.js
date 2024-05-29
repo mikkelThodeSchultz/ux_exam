@@ -1,5 +1,4 @@
 import { createFoodCart } from './foodCart.js';
-import { getUserByEmail } from './jsonApi.js';
 import { searchMealById } from './mealApi.js';
 
 export const setUpFavorites = async () => {
@@ -8,7 +7,7 @@ export const setUpFavorites = async () => {
         location.href = '../views/login.html';
         return;
     }
-    const user = await getUserByEmail(userEmail);
+
     const userFavoritesList = JSON.parse(localStorage.getItem('favoritesIdList'));
     const mealsContainer = document.getElementById('favoritesMealsContainer');
     mealsContainer.innerHTML = '';
@@ -16,6 +15,6 @@ export const setUpFavorites = async () => {
         const meal = await searchMealById(userFavoritesList[index]);
         const foodCard = await createFoodCart(meal);
         mealsContainer.appendChild(foodCard);
-    } 
+    }
 };
 
