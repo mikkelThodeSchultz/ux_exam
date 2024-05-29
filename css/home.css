@@ -179,3 +179,10 @@ main nav {
 .wave:nth-child(8) {
   animation-delay: 0.7s;
 }
+
+@media screen and (max-width: 780px) {
+  #home_wrapper {
+    margin-top: 126px;
+    padding: 1rem;
+  }
+}
