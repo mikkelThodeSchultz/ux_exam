@@ -56,10 +56,6 @@ nav #logOutBtn:hover {
     gap: var(--spacing-4);
   }
 
-  main {
-    padding: var(--spacing-16);
-  }
-
   .exploreHeader,
   .favoritesHeader {
     padding-top: var(--spacing-16);

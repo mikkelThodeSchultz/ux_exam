@@ -9,4 +9,5 @@ footer {
   padding: var(--spacing-4);
   background-color: var(--color-primary);
   color: var(--color-secondary);
+  text-align: center;
 }

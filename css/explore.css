@@ -2,7 +2,9 @@
 @import url("../css/dialog_card.css");
 
 main {
-  padding: var(--spacing-16);
+  padding-top: var(--spacing-16);
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
 }
 
 input {
@@ -158,15 +160,15 @@ dialog#categories .close {
   box-shadow: var(--box-shadow);
 }
 
-.foodCart> :not(.thumbContainer) {
+.foodCart > :not(.thumbContainer) {
   margin-inline: var(--_padding);
 }
 
-.foodCart> :last-child:not(.thumbContainer) {
+.foodCart > :last-child:not(.thumbContainer) {
   margin-block-end: var(--_padding);
 }
 
-.foodCart>.thumbContainer img {
+.foodCart > .thumbContainer img {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -177,7 +179,6 @@ dialog#categories .close {
   line-height: var(--line-height-base);
   max-width: 50ch;
   color: var(--color-secondary);
-
 }
 
 .title_container {
@@ -260,13 +261,11 @@ dialog#categories .close {
 .addToFavorites:hover {
   background-color: var(--color-button-favorites);
   color: var(--color-primary);
-
 }
 
 .addToFavorites:focus {
   background-color: var(--color-button-favorites);
   color: var(--color-primary);
-
 }
 
 .removeFromFavorites {
@@ -284,19 +283,16 @@ dialog#categories .close {
   color: var(--color-primary);
 }
 
-
-
-
 #mealsContainer .foodCart:nth-child(5n) {
   @container (min-width: 700px) {
     grid-column: span 2;
     grid-template-columns: subgrid;
 
-    >.thumbContainer {
+    > .thumbContainer {
       grid-column: 1 / -1;
     }
 
-    >.foodCart__title {
+    > .foodCart__title {
       font-size: 2rem;
       grid-column: 1 / -1;
     }
@@ -330,7 +326,8 @@ dialog#categories .close {
       height: 40px;
       width: 45px;
       border-radius: 0 0 0 var(--border-radius-card);
-      transition: all var(--transition-duration-150) var(--transition-ease-in-out);
+      transition: all var(--transition-duration-150)
+        var(--transition-ease-in-out);
     }
 
     .addToFavoritesWide:hover {
@@ -345,13 +342,13 @@ dialog#categories .close {
       height: 40px;
       width: 45px;
       border-radius: 0 0 0 var(--border-radius-card);
-      transition: all var(--transition-duration-150) var(--transition-ease-in-out);
+      transition: all var(--transition-duration-150)
+        var(--transition-ease-in-out);
     }
 
     .removeFromFavoritesWide:hover {
       transform: scale(1.1);
     }
-
 
     @container (min-width: 1000px) {
       grid-column: span 2;

@@ -140,6 +140,7 @@ form {
 @media (max-width: 600px) {
   #login_form_and_text_wrapper {
     border: none;
+    padding-top: var(--spacing-12);
   }
 }
 
