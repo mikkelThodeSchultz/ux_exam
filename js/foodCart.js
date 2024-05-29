@@ -169,8 +169,8 @@ export const createFoodCart = async (mealList) => {
 };
 
 const shortenInstructions = async (instructions) => {
-    if (instructions.length > 50) {
-        return instructions.substring(0, 50) + '...';
+    if (instructions.length > 100) {
+        return instructions.substring(0, 100) + '...';
     } else {
         return instructions;
     }
