@@ -186,3 +186,9 @@ main nav {
     padding: 1rem;
   }
 }
+
+@media (min-aspect-ratio: 375/667) and (max-aspect-ratio: 375/667) and (max-width: 1000px) {
+  #home_wrapper #hero_image {
+    display: none;
+  }
+}
