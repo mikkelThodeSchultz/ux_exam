@@ -2,6 +2,7 @@
 
 main {
   padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
   padding-left: var(--spacing-4);
   padding-right: var(--spacing-4);
 }
