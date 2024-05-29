@@ -136,6 +136,6 @@ form {
 /* Target devices with aspect ratio between 3/2 and 4/3 and max-width of 800px */
 @media (min-aspect-ratio: 1/2.5) and (max-aspect-ratio: 2/1) and (max-width: 1000px) {
   #signup_wrapper article .hidden_mobile {
-    display: none;
+    display: block;
   }
 }
