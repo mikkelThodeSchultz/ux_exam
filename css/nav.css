@@ -1,11 +1,6 @@
 /* NAV */
 
 nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,9 +51,10 @@ nav #logOutBtn:hover {
     gap: var(--spacing-4);
   }
   main {
-    padding: var(--spacing-16);
+    padding: var(--spacing-4);
   }
-  .exploreHeader, .favoritesHeader {
-    padding-top: var(--spacing-16);
+  .exploreHeader,
+  .favoritesHeader {
+    padding-top: var(--spacing-4);
   }
 }

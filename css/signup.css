@@ -115,7 +115,7 @@ form {
   }
 
   #signup_wrapper article .hidden_mobile {
-    display: flex;
+    display: block;
   }
 }
 
