@@ -143,3 +143,9 @@ form {
     display: none;
   }
 }
+
+@media (min-aspect-ratio: 375/667) and (max-aspect-ratio: 375/667) and (max-width: 1000px) {
+  #signup_form_and_text_wrapper {
+    margin-top: var(--spacing-16);
+  }
+}

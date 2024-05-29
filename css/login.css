@@ -150,3 +150,9 @@ form {
     display: none;
   }
 }
+
+@media (min-aspect-ratio: 375/667) and (max-aspect-ratio: 375/667) and (max-width: 1000px) {
+  #login_wrapper .hidden_mobile {
+    display: none;
+  }
+}
